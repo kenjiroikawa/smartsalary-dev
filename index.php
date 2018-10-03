@@ -207,6 +207,10 @@ function replyCarouselTemplate($bot, $replyToken, $alternativeText,
 }
 
 foreach ($events as $event) {
+
+  //ユーザーIDを表示
+  error_log($event->getUserId());
+
   if (!($event instanceof \LINE\LINEBot\Event\MessageEvent)) {
       error_log('Non message event has come');
       continue;
@@ -215,6 +219,7 @@ foreach ($events as $event) {
     error_log('Non message event has come');
     continue;
   }
+
   // オウム返し
   $bot->replyText($event->getReplyToken(), $event->getText());
 }
