@@ -7,7 +7,8 @@ require_once __DIR__ . '/vendor/autoload.php';
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient(getenv('CHANNEL_ACCESS_TOKEN'));
 
 // CurlHTTPClientとシークレットを使いLINEBotをインスタンス化
-$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('CHANNEL_SECRET')]);
+$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv(
+                                'CHANNEL_SECRET')]);
 
 
 // あなたのユーザーIDを入力してください。
