@@ -206,7 +206,6 @@ function replyCarouselTemplate($bot, $replyToken, $alternativeText,
   }
 }
 
-//　STEP1:ユーザーID取得、勤務地の都道府県を質問
 foreach ($events as $event) {
   if (!($event instanceof \LINE\LINEBot\Event\MessageEvent)) {
       error_log('Non message event has come');
@@ -219,6 +218,7 @@ foreach ($events as $event) {
   // オウム返し
   $bot->replyText($event->getReplyToken(), $event->getText());
 
+  //　STEP1:ユーザーID取得、勤務地の都道府県を質問
   //　ユーザーIDを取得
   $userId = $event->getUserId();
 
@@ -232,18 +232,6 @@ foreach ($events as $event) {
     error_log('Failed! '. $response->getHTTPStatus . ' ' .
                                 $response->getRawBody());
     }
-}
-
-//　STEP2:勤務地の都道府県取得、家の広さに関する質問
-foreach ($events as $event) {
-  if (!($event instanceof \LINE\LINEBot\Event\MessageEvent)) {
-      error_log('Non message event has come');
-      continue;
-  }
-  if (!($event instanceof \LINE\LINEBot\Event\MessageEvent\TextMessage)) {
-    error_log('Non message event has come');
-    continue;
-  }
 
   //　勤務地を取得
   $work_location = $event->getText();
