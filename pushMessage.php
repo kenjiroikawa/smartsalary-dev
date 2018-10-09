@@ -12,7 +12,7 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv(
 
 
 // あなたのユーザーIDを入力してください。
-$userId = 'U1fe57aa194beef5c5f3c916ce6839d55'；
+$userId = 'U1fe57aa194beef5c5f3c916ce6839d55';
 $message = 'Hello Push API';
 
 // メッセージをユーザーID宛にプッシュ
