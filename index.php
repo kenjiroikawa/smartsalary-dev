@@ -219,9 +219,7 @@ foreach ($events as $event) {
     continue;
   }
 
-  // 複数入力を処理
-  $inputs = $event->getText();
-  $input = explode("、",$inputs);
-  $bot->replyText($reply_token, $inputs, $input[0], $input[1], $input[2], $input[3]);
+  //オウム返し
+  $bot->replyText($reply_token, $event->getText());
 }
 ?>
