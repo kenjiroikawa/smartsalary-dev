@@ -219,6 +219,17 @@ foreach ($events as $event) {
     continue;
   }
 
+
+  // あなたのユーザーIDを入力してください。
+  $userId = 'U1fe57aa194beef5c5f3c916ce6839d55'；
+  $message = 'Hello Push API';
+
+  // メッセージをユーザーID宛にプッシュ
+  $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
+                                TextMessageBuilder($message));
+  if(!$response->isSucceeded()){
+    error_log('Failed! '. $response->getHTTPStatus . ' ' .
+                              $response->getRawBody());
   //オウム返し
   $bot->replyText($event->getReplyToken(), $event->getText());
 }
