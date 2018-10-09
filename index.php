@@ -218,7 +218,8 @@ foreach ($events as $event) {
     error_log('Non message event has come');
     continue;
   }
-
+  //オウム返し
+  $bot->replyText($event->getReplyToken(), $event->getText());
 
   // あなたのユーザーIDを入力してください。
   $userId = 'U1fe57aa194beef5c5f3c916ce6839d55'；
@@ -230,7 +231,6 @@ foreach ($events as $event) {
   if(!$response->isSucceeded()){
     error_log('Failed! '. $response->getHTTPStatus . ' ' .
                               $response->getRawBody());
-  //オウム返し
-  $bot->replyText($event->getReplyToken(), $event->getText());
+  }
 }
 ?>
