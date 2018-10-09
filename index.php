@@ -231,5 +231,13 @@ foreach ($events as $event) {
     error_log('Failed! '. $response->getHTTPStatus . ' ' .
                                 $response->getRawBody());
     }
+
+    //　勤務地を取得
+    $work_location = $event->getText();
+    $reply_location = "勤務地は「$work_location」ですね。"
+
+    // 勤務地をオウム返し
+    $bot->replyText($event->getReplyToken(), $reply_location);
+
 }
 ?>
