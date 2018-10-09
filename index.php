@@ -220,6 +220,6 @@ foreach ($events as $event) {
   }
 
   //オウム返し
-  $bot->replyText($reply_token, $event->getText());
+  $bot->replyText($event->getReplyToken(), $event->getText());
 }
 ?>
