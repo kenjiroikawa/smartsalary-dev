@@ -42,7 +42,6 @@ foreach ($events as $event){
     error_log('Non text message has come');
     continue;
   }
-
 }
 
 // テキストを返信。引数はLINEBot、返信先、テキスト
@@ -220,7 +219,9 @@ foreach ($events as $event) {
     continue;
   }
 
-  // オウム返し
-  $bot->replyText($event->getReplyToken(), $event->getText());
+  // 複数入力を処理
+  $inputs = $event->getText();
+  $input = explode("、",$inputs);
+  $bot->replyText($reply_token, $inputs, $input[0], $input[1], $input[2], $input[3]);
 }
 ?>
