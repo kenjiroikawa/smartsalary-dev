@@ -225,11 +225,11 @@ foreach ($events as $event) {
   $message = '勤務地の都道府県を入力ください。';
 
   // メッセージをユーザーID宛にプッシュ
-  $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
+  $response1 = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
                                   TextMessageBuilder($message));
-    if(!$response->isSucceeded()){
-    error_log('Failed! '. $response->getHTTPStatus . ' ' .
-                                $response->getRawBody());
+    if(!$response1->isSucceeded()){
+    error_log('Failed! '. $response1->getHTTPStatus . ' ' .
+                                $response1->getRawBody());
     }
 
     //　勤務地を取得
@@ -237,7 +237,12 @@ foreach ($events as $event) {
     $reply_location = "勤務地は「$work_location」ですね。"
 
     // 勤務地をオウム返し
-    $bot->replyText($event->getReplyToken(), $reply_location);
+    $response2 = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
+                                    TextMessageBuilder($reply_location));
+      if(!$response2->isSucceeded()){
+      error_log('Failed! '. $response2->getHTTPStatus . ' ' .
+                                  $response2->getRawBody());
+      }
 
 }
 ?>
