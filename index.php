@@ -217,5 +217,19 @@ foreach ($events as $event) {
   }
   // オウム返し
   $bot->replyText($event->getReplyToken(), $event->getText());
+
+  //　ユーザーIDを取得
+  $userId = $event->getUserId();
+
+  //　勤務地に関する質問をメッセージに代入
+  $message = '勤務地の都道府県を入力ください。';
+
+  // メッセージをユーザーID宛にプッシュ
+  $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
+                                  TextMessageBuilder($message));
+    if(!$response->isSucceeded()){
+    error_log('Failed! '. $response->getHTTPStatus . ' ' .
+                                $response->getRawBody());
+    }
 }
 ?>
