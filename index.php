@@ -32,7 +32,7 @@ try{
 
 // 配列に格納された各イベントをループで処理
 foreach ($events as $event){
-  // MessageEventクラスのインスタンスでなければ処理をスキップ
+  // MessageEventクラスのインスタンでなければ処理をスキップ
   if (!($event instanceof \LINE\LINEBot\Event\MessageEvent)) {
     error_log('Non message event has come');
     continue;
@@ -42,11 +42,7 @@ foreach ($events as $event){
     error_log('Non text message has come');
     continue;
   }
-  //　ユーザーIDを表示
-  error_log($event->getUserId());
 
-　//　おうむ返しテスト
-  $bot->replyText($event->getReplyToken(), $event->getText());
 }
 
 // テキストを返信。引数はLINEBot、返信先、テキスト
@@ -210,4 +206,16 @@ function replyCarouselTemplate($bot, $replyToken, $alternativeText,
   }
 }
 
+foreach ($events as $event) {
+  if (!($event instanceof \LINE\LINEBot\Event\MessageEvent)) {
+      error_log('Non message event has come');
+      continue;
+  }
+  if (!($event instanceof \LINE\LINEBot\Event\MessageEvent\TextMessage)) {
+    error_log('Non message event has come');
+    continue;
+  }
+  // オウム返し
+  $bot->replyText($event->getReplyToken(), $event->getText());
+}
 ?>
