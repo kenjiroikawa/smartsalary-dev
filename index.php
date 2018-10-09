@@ -32,7 +32,7 @@ try{
 
 // 配列に格納された各イベントをループで処理
 foreach ($events as $event){
-  // MessageEventクラスのインスタンでなければ処理をスキップ
+  // MessageEventクラスのインスタンスでなければ処理をスキップ
   if (!($event instanceof \LINE\LINEBot\Event\MessageEvent)) {
     error_log('Non message event has come');
     continue;
@@ -42,7 +42,22 @@ foreach ($events as $event){
     error_log('Non text message has come');
     continue;
   }
+  //ユーザーIDを表示
+  error_log($event->getUserId());
+
+  // ユーザーIDを取得、勤務地に関する質問をメッセージに代入
+  $userId = $event->getUserId();
+  $message = '勤務地の都道府県を入力ください。';
+
+  // メッセージをユーザーID宛にプッシュ
+  $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
+                                TextMessageBuilder($message));
+  if(!$response->isSucceeded()){
+    error_log('Failed! '. $response->getHTTPStatus . ' ' .
+                              $response->getRawBody());
 }
+
+
 
 // テキストを返信。引数はLINEBot、返信先、テキスト
 function replyTextMessage($bot, $replyToken, $text){
@@ -205,32 +220,37 @@ function replyCarouselTemplate($bot, $replyToken, $alternativeText,
   }
 }
 
-foreach ($events as $event) {
+//　データベースへの接続を管理するクラス
+class dbConnection {
+  //　インスタンス
+  protected static $db;
+  //　コンストラクタ
+  private function __construct() {
 
-  //ユーザーIDを表示
-  error_log($event->getUserId());
-
-  if (!($event instanceof \LINE\LINEBot\Event\MessageEvent)) {
-      error_log('Non message event has come');
-      continue;
+    try {
+      //環境変数からデータベースへの接続情報を取得
+      $url = parse_url(getenv('DATABASE_URL'));
+      //　データソース
+      $dsn = sprintf('pgsql:host=%s;dbnames=%s', $url['host'], substr(
+                            $url['path'], 1));
+      //　接続を確立
+      self::$db = new PDO($dsn, $url['user'], $url['pass']);
+      //　エラー時例外を投げるように設定
+      self::$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    }
+    catch (PDOException $e) {
+      echo 'Connection Error: ' . $e->getMessage();
+    }
   }
-  if (!($event instanceof \LINE\LINEBot\Event\MessageEvent\TextMessage)) {
-    error_log('Non message event has come');
-    continue;
-  }
-  //オウム返し
-  $bot->replyText($event->getReplyToken(), $event->getText());
 
-  // あなたのユーザーIDを入力してください。
-  $userId = 'U1fe57aa194beef5c5f3c916ce6839d55';
-  $message = 'Hello Push API';
-
-  // メッセージをユーザーID宛にプッシュ
-  $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
-                                TextMessageBuilder($message));
-  if(!$response->isSucceeded()){
-    error_log('Failed! '. $response->getHTTPStatus . ' ' .
-                              $response->getRawBody());
+  //　シングルトン。存在しない場合のみインスタンス化
+  public static function getConnection() {
+    if (!self::$db) {
+      new dbConnection(;)
+    }
+    return self::$db;
   }
 }
+
+
 ?>
