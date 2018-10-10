@@ -223,7 +223,8 @@ foreach ($events as $event) {
   $userId = $event->getUserId();
 
   //　勤務地に関する質問をメッセージに代入
-  $message = '勤務地の都道府県を入力ください。';
+  $message = '勤務地の都道府県を入力してください。';
+  $message2 = 'ご自宅の広さを「畳」で入力してください';
 
   // メッセージをユーザーID宛にプッシュ
   $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
@@ -234,7 +235,7 @@ foreach ($events as $event) {
     }
 
     $response2 = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
-                                    TextMessageBuilder($message));
+                                    TextMessageBuilder($message2));
       if(!$response2->isSucceeded()){
       error_log('Failed! '. $response2->getHTTPStatus . ' ' .
                                   $response2->getRawBody());
