@@ -206,7 +206,7 @@ function replyCarouselTemplate($bot, $replyToken, $alternativeText,
   }
 }
 
-$statuscode = '0';
+$statuscode = 0;
 
 foreach ($events as $event) {
   if (!($event instanceof \LINE\LINEBot\Event\MessageEvent)) {
@@ -224,7 +224,7 @@ foreach ($events as $event) {
   //　ユーザーIDを取得
   $userId = $event->getUserId();
 
-  if ($statuscode == ‘0’) {
+  if ($statuscode == 0 ) {
 
     //　勤務地の都道府県に関する質問
     $message = '勤務地の都道府県を入力してください。';
@@ -237,11 +237,12 @@ foreach ($events as $event) {
                                   $response->getRawBody());
       }
 
-    $statuscode = '1';
+    $statuscode = 1;
 
-  } else ($statuscode == ‘1’) {
+  } else ($statuscode == 1 ) {
     //　自宅の広さに関する質問
     $message2 = 'ご自宅の広さを「畳」で入力してください。';
+
     $response2 = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
                                     TextMessageBuilder($message2));
       if(!$response2->isSucceeded()){
