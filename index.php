@@ -247,6 +247,8 @@ foreach ($events as $event) {
     }
 
     $end = 'プロセスを終了します。';
+    $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
+                                    TextMessageBuilder($end));
     exit();
 }
 ?>
