@@ -219,7 +219,7 @@ foreach ($events as $event) {
   }
 
   // オウム返し
-  $bot->replyText($event->getReplyToken(), $event->getText());
+  //$bot->replyText($event->getReplyToken(), $event->getText());
 
   //　ユーザーIDを取得
   $userId = $event->getUserId();
@@ -239,17 +239,17 @@ foreach ($events as $event) {
 
     $statuscode = 1;
 
-  } else ($statuscode == 1 ) {
+    } else ($statuscode == 1 ) {
     //　自宅の広さに関する質問
-    $message2 = 'ご自宅の広さを「畳」で入力してください。';
+    //$message2 = 'ご自宅の広さを「畳」で入力してください。';
 
-    $response2 = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
-                                    TextMessageBuilder($message2));
-      if(!$response2->isSucceeded()){
-      error_log('Failed! '. $response2->getHTTPStatus . ' ' .
-                                  $response2->getRawBody());
-      }
-    $statuscode = '2';
+      //$response2 = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
+      //                              TextMessageBuilder($message2));
+      //if(!$response2->isSucceeded()){
+      //error_log('Failed! '. $response2->getHTTPStatus . ' ' .
+        //                          $response2->getRawBody());
+      //}
+    $statuscode = 2;
   }
 
 
