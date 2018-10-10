@@ -221,10 +221,10 @@ foreach ($events as $event) {
   // オウム返し
   //$bot->replyText($event->getReplyToken(), $event->getText());
 
-  //　ユーザーIDを取得
-  $userId = $event->getUserId();
-
   if ($statuscode == 0 ) {
+
+    //　ユーザーIDを取得
+    $userId = $event->getUserId();
 
     //　勤務地の都道府県に関する質問
     $message = '勤務地の都道府県を入力してください。';
@@ -237,7 +237,7 @@ foreach ($events as $event) {
                                   $response->getRawBody());
       }
 
-    $statuscode = 1;
+    $statuscode++;
 
     } else ($statuscode == 1 ) {
     //　自宅の広さに関する質問
@@ -249,7 +249,7 @@ foreach ($events as $event) {
       //error_log('Failed! '. $response2->getHTTPStatus . ' ' .
         //                          $response2->getRawBody());
       //}
-    $statuscode = 2;
+    $statuscode++;
   }
 
 
