@@ -245,5 +245,8 @@ foreach ($events as $event) {
     error_log('Failed! '. $response->getHTTPStatus . ' ' .
                                 $response->getRawBody());
     }
+
+    $end = 'プロセスを終了します。';
+    exit();
 }
 ?>
