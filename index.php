@@ -232,5 +232,12 @@ foreach ($events as $event) {
     error_log('Failed! '. $response->getHTTPStatus . ' ' .
                                 $response->getRawBody());
     }
+
+    $response2 = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
+                                    TextMessageBuilder($message));
+      if(!$response2->isSucceeded()){
+      error_log('Failed! '. $response2->getHTTPStatus . ' ' .
+                                  $response2->getRawBody());
+      }
 }
 ?>
