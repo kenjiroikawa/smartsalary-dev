@@ -232,13 +232,28 @@ foreach ($events as $event) {
     error_log('Failed! '. $response->getHTTPStatus . ' ' .
                                 $response->getRawBody());
     }
+}
+
+foreach ($events as $event) {
+  if (!($event instanceof \LINE\LINEBot\Event\MessageEvent)) {
+      error_log('Non message event has come');
+      continue;
+  }
+  if (!($event instanceof \LINE\LINEBot\Event\MessageEvent\TextMessage)) {
+    error_log('Non message event has come');
+    continue;
+  }
 
   //　勤務地を取得
   $work_location = json_decode($event->getText());
   //$reply_location = "勤務地は「$work_location」ですね。";
 
-  //現物支給ファイルの読み込み
-  require_once __DIR__ . '/gennbutsusikyu.php';
-
+  // 勤務地をオウム返し
+  $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
+                                  TextMessageBuilder($work_location));
+  if(!$response->isSucceeded()){
+    error_log('Failed! '. $response->getHTTPStatus . ' ' .
+                                $response->getRawBody());
+  }
 }
 ?>
