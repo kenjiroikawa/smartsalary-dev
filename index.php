@@ -259,5 +259,5 @@ $test = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
   error_log('Failed! '. $test->getHTTPStatus . ' ' .
                                 $test->getRawBody());
   }
-
+}
 ?>
