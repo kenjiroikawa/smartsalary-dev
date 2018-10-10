@@ -235,11 +235,11 @@ foreach ($events as $event) {
 
   //　勤務地を取得
   $work_location = json_decode($event->getText());
-  $reply_location = "勤務地は「$work_location」ですね。";
+  //$reply_location = "勤務地は「$work_location」ですね。";
 
   // 勤務地をオウム返し
   $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
-                                  TextMessageBuilder($reply_location));
+                                  TextMessageBuilder($work_location));
   if(!$response->isSucceeded()){
     error_log('Failed! '. $response->getHTTPStatus . ' ' .
                                 $response->getRawBody());
