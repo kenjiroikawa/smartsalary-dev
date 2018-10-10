@@ -216,7 +216,7 @@ foreach ($events as $event) {
     continue;
   }
   // オウム返し
-  $bot->replyText($event->getReplyToken(), $event->getText());
+  //$bot->replyText($event->getReplyToken(), $event->getText());
 
   //　STEP1:ユーザーID取得、勤務地の都道府県を質問
   //　ユーザーIDを取得
@@ -237,12 +237,8 @@ foreach ($events as $event) {
   $work_location = json_decode($event->getText());
   //$reply_location = "勤務地は「$work_location」ですね。";
 
-  // 勤務地をオウム返し
-  $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
-                                  TextMessageBuilder($work_location));
-  if(!$response->isSucceeded()){
-    error_log('Failed! '. $response->getHTTPStatus . ' ' .
-                                $response->getRawBody());
-    }
+  //現物支給ファイルの読み込み
+  require_once __DIR__ . '/gennbutsusikyu.php';
+
 }
 ?>
