@@ -29,6 +29,7 @@ try{
 }
 
 
+define('STDIN',fopen("php://stdin","r"));
 
 // 配列に格納された各イベントをループで処理
 foreach ($events as $event){
@@ -248,7 +249,7 @@ foreach ($events as $event) {
 
     //　入力待ち
     $line = fgets(STDIN);
-    
+
     // オウム返し
     $bot->replyText($event->getReplyToken(), $event->getText());
 
