@@ -246,6 +246,9 @@ foreach ($events as $event) {
         continue;
       }
 
+    // オウム返し
+    $bot->replyText($event->getReplyToken(), $event->getText());
+
     //　ステータスコードを更新
     $statuscode = 1;
 
@@ -259,7 +262,7 @@ foreach ($events as $event) {
                                   $response2->getRawBody());
       }
 
-    $checkreply = "foreach①に戻りました。ステータスコードは$statuscodeです。処理を終了します。";
+    $checkreply = "foreach①に戻りました。処理を終了します。";
     $response3 = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
                                   TextMessageBuilder($checkreply));
       if(!$response3->isSucceeded()){
