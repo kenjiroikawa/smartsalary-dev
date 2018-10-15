@@ -246,6 +246,9 @@ foreach ($events as $event) {
         continue;
       }
 
+    //　入力待ち
+    $line = fgets(STDIN);
+    
     // オウム返し
     $bot->replyText($event->getReplyToken(), $event->getText());
 
