@@ -219,45 +219,58 @@ foreach ($events as $event) {
   }
 
   // オウム返し
-  //$bot->replyText($event->getReplyToken(), $event->getText());
+  $bot->replyText($event->getReplyToken(), $event->getText());
 
-  if ($statuscode == 0 ) {
+  //　ユーザーIDを取得
+  $userId = $event->getUserId();
 
-    //　ユーザーIDを取得
-    $userId = $event->getUserId();
+  //　勤務地の都道府県に関する質問
+  $message = '勤務地の都道府県を入力してください。';
 
-    //　勤務地の都道府県に関する質問
-    $message = '勤務地の都道府県を入力してください。';
-
-    // メッセージをユーザーID宛にプッシュ
-    $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
+  // メッセージをユーザーID宛にプッシュ
+  $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
                                     TextMessageBuilder($message));
-      if(!$response->isSucceeded()){
-      error_log('Failed! '. $response->getHTTPStatus . ' ' .
+    if(!$response->isSucceeded()){
+    error_log('Failed! '. $response->getHTTPStatus . ' ' .
                                   $response->getRawBody());
+    }
+
+//　２つ目の質問。勤務地の都道府県を受取
+    foreach ($events as $event) {
+      if (!($event instanceof \LINE\LINEBot\Event\MessageEvent)) {
+          error_log('Non message event has come');
+          continue;
+      }
+      if (!($event instanceof \LINE\LINEBot\Event\MessageEvent\TextMessage)) {
+        error_log('Non message event has come');
+        continue;
       }
 
-    $statuscode++;
+    //　ステータスコードを更新
+    $statuscode = 1;
 
-    } else ($statuscode == 1 ) {
     //　自宅の広さに関する質問
-    //$message2 = 'ご自宅の広さを「畳」で入力してください。';
+    $message2 = 'ご自宅の広さを「畳」で入力してください。';
 
-      //$response2 = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
-      //                              TextMessageBuilder($message2));
-      //if(!$response2->isSucceeded()){
-      //error_log('Failed! '. $response2->getHTTPStatus . ' ' .
-        //                          $response2->getRawBody());
-      //}
-    $statuscode++;
-  }
+    $response2 = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
+                                    TextMessageBuilder($message2));
+      if(!$response2->isSucceeded()){
+      error_log('Failed! '. $response2->getHTTPStatus . ' ' .
+                                  $response2->getRawBody());
+      }
 
-
-$test = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
+$checkreply = 'foreach①に戻りました。処理を終了します。';
+$response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
                                   TextMessageBuilder($statuscode));
-  if(!$test->isSucceeded()){
-  error_log('Failed! '. $test->getHTTPStatus . ' ' .
-                                $test->getRawBody());
+  if(!$response->isSucceeded()){
+  error_log('Failed! '. $response->getHTTPStatus . ' ' .
+                                $response->getRawBody());
   }
+
+
+//　foreach②の終わり
+}
+
+//　foreach①の終わり
 }
 ?>
