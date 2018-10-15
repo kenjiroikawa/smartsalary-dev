@@ -235,22 +235,24 @@ foreach ($events as $event) {
     error_log('Failed! '. $response->getHTTPStatus . ' ' .
                                   $response->getRawBody());
     }
+continue;
+}
 
 //　２つ目の質問。勤務地の都道府県を受取
-    foreach ($events as $event) {
-      if (!($event instanceof \LINE\LINEBot\Event\MessageEvent)) {
-          error_log('Non message event has come');
-          continue;
-      }
-      if (!($event instanceof \LINE\LINEBot\Event\MessageEvent\TextMessage)) {
+  foreach ($events as $event) {
+    if (!($event instanceof \LINE\LINEBot\Event\MessageEvent)) {
         error_log('Non message event has come');
         continue;
-      }
+    }
+    if (!($event instanceof \LINE\LINEBot\Event\MessageEvent\TextMessage)) {
+      error_log('Non message event has come');
+      continue;
+    }
 
     //　入力待ち
     $line = fgets(STDIN);
 
-    //　10病待機
+    //　10秒待機
     sleep(10);
 
     // オウム返し
@@ -282,5 +284,5 @@ foreach ($events as $event) {
 }
 
 //　foreach①の終わり
-}
+//}
 ?>
