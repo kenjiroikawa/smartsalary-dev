@@ -250,6 +250,9 @@ foreach ($events as $event) {
     //　入力待ち
     $line = fgets(STDIN);
 
+    //　10病待機
+    sleep(10);
+
     // オウム返し
     $bot->replyText($event->getReplyToken(), $event->getText());
 
