@@ -259,12 +259,12 @@ foreach ($events as $event) {
                                   $response2->getRawBody());
       }
 
-$checkreply = 'foreach①に戻りました。処理を終了します。';
-$response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
-                                  TextMessageBuilder($statuscode));
-  if(!$response->isSucceeded()){
-  error_log('Failed! '. $response->getHTTPStatus . ' ' .
-                                $response->getRawBody());
+    $checkreply = "foreach①に戻りました。ステータスコードは$statuscodeです。処理を終了します。";
+    $response3 = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
+                                  TextMessageBuilder($checkreply));
+      if(!$response3->isSucceeded()){
+      error_log('Failed! '. $response3->getHTTPStatus . ' ' .
+                                  $response3->getRawBody());
   }
 
 
