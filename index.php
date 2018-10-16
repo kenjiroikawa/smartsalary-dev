@@ -219,14 +219,30 @@ foreach ($events as $event) {
 
 
   // オウム返し
-  $parameter = $event->getText();
-  $bot->replyText($event->getReplyToken(), $parameter);
+  $parameters = $event->getText();
+  $bot->replyText($event->getReplyToken(), $parameters);
 
   //　ユーザーIDを取得
   $userId = $event->getUserId();
 
+  //parametesを分解
+  $parameter = explode(",",$parameters);
+
+  $object = [
+          'replyToken' => 'token',
+          'messages' => [
+              ['type' => 'text', 'text' => "$parameter[0]"],
+              ['type' => 'text', 'text' => "$parameter[1]"],
+          ]
+      ];
+
+  post('reply', $object);
+
+
   //　勤務地の都道府県に関する質問
-  $message = '勤務地の都道府県を入力してください。';
+  //$message = '勤務地の都道府県を入力してください。';
+
+
 
   // メッセージをユーザーID宛にプッシュ
   $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
