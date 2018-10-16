@@ -223,7 +223,7 @@ foreach ($events as $event) {
   //　ユーザーIDを取得
   $userId = $event->getUserId();
 
-  //parametesを分解
+  //parametersを分解
   $parameter = explode("、",$parameters);
 
   $location = $parameter[0];
@@ -232,6 +232,10 @@ foreach ($events as $event) {
   $before_bonus = $parameter[3];
   $houserent = $parameter[4];
   $ages = $parameter[5];
+
+  $payment_reduce = $houserent * 0.8;
+  $after_salary = $parameter[2] - $payment_reduce;
+
 
   if($location == '東京都'){
   $housebenefit = 2590;
@@ -288,11 +292,6 @@ foreach ($events as $event) {
   }
 
   $calculation[] = $pension_premiums; // [7] 厚生年金保険料
-
-
-  $payment_reduce = $houserent * 0.8;
-  $after_salary = $before_salary - $payment_reduce;
-
   $calculation[] = $payment_reduce; // [8] 家賃×0.8
   $calculation[] = $after_salary; // [9] スマートサラリー導入後の給与
 
