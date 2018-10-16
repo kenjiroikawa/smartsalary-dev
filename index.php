@@ -232,10 +232,16 @@ foreach ($events as $event) {
   $space = "広さは　$parameter[1]　です。";
 
 
-  // メッセージをユーザーID宛にプッシュ
+  // メッセージ1をユーザーID宛にプッシュ
   $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
                                     TextMessageBuilder($location));
 
+    if(!$response->isSucceeded()){
+    error_log('Failed! '. $response->getHTTPStatus . ' ' .
+                                  $response->getRawBody());
+    }
+
+  // メッセージ2をユーザーID宛にプッシュ
   $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
                                     TextMessageBuilder($space));
 
@@ -243,6 +249,7 @@ foreach ($events as $event) {
     error_log('Failed! '. $response->getHTTPStatus . ' ' .
                                   $response->getRawBody());
     }
+
 }
 
 
