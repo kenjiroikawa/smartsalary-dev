@@ -263,15 +263,10 @@ foreach ($events as $event) {
   $calculation[] = 100; // [3] 賞与
   $calculation[] = $calculation[2] * $calculation[3]; // [4] スマートサラリー導入前の年収
 
-  $message1 = "勤務地：$parameter[0]\n
-              $parameter[0]の住宅利益は1畳あたり$calculation[0]\n
-              広さは　$parameter[1]\n
-              現物支給額「$calculation[1]」となります。";
+  $message1 = "勤務地：$parameter[0]\n$parameter[0]の住宅利益は1畳あたり$calculation[0]円、広さは$parameter[1]畳のため\n
+              現物支給額$calculation[1]円となります。";
 
-  $message2 = "スマートサラリー導入前\n
-               給与：$parameter[2]万円\n
-               賞与：$parameter[3]万円\n
-               年収：$parameter[4]万円\n";
+  $message2 = "スマートサラリー導入前\n給与：$calculation[2]万円\n賞与：$calculation[3]万円\n年収：$calculation[4]万円\n";
 
   // 現物支給に関するメッセージ1をユーザーID宛にプッシュ
   $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
