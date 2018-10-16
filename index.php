@@ -282,21 +282,21 @@ foreach ($events as $event) {
   $calculation[] = $before_slary; // [2] 月額給与
   $calculation[] = $before_bonus; // [3] 賞与
   $calculation[] = $calculation[2] * 12 + $calculation[3]; // [4] スマートサラリー導入前の年収
-
+  $calculation[] = $ages // [5] 年齢
   if($ages < 40){
-    $calculation[] = $health_insurance_expense_nomal; // [5] 40歳未満　健康保険料
+    $calculation[] = $health_insurance_expense_nomal; // [6] 40歳未満　健康保険料
   }else{
-    $calculation[] = $health_insurance_expense_kaigo; // [5] 40歳以上　健康保険料（介護保険料加算）
+    $calculation[] = $health_insurance_expense_kaigo; // [6] 40歳以上　健康保険料（介護保険料加算）
   }
 
-  $calculation[] = $pension_premiums; // [6] 厚生年金保険料
+  $calculation[] = $pension_premiums; // [7] 厚生年金保険料
 
 
 
 
   $message1 = "勤務地：$parameter[0]\n\n住宅利益：$calculation[0]円/1畳\n広さ：$parameter[1]畳\n\n現物支給額は$calculation[1]円となります。";
 
-  $message2 = "スマートサラリー導入前\n給与：$calculation[2]万円\n賞与：$calculation[3]万円\n年収：$calculation[4]万円";
+  $message2 = "スマートサラリー導入前\n給与：$calculation[2]円\n賞与：$calculation[3]円\n年収：$calculation[4]円\n\n年齢：$calculation[5]歳\n健康保険料：$calculation[6]円\n厚生年金保険料：$calculation[7]円";
 
   // 現物支給に関するメッセージ1をユーザーID宛にプッシュ
   $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
