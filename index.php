@@ -29,8 +29,6 @@ try{
 }
 
 
-define('STDIN',fopen("php://stdin","r"));
-
 // 配列に格納された各イベントをループで処理
 foreach ($events as $event){
   // MessageEventクラスのインスタンでなければ処理をスキップ
@@ -219,8 +217,10 @@ foreach ($events as $event) {
     continue;
   }
 
+
   // オウム返し
-  $bot->replyText($event->getReplyToken(), $event->getText());
+  $parameter = $event->getText();
+  $bot->replyText($event->getReplyToken(), $parameter);
 
   //　ユーザーIDを取得
   $userId = $event->getUserId();
@@ -235,54 +235,7 @@ foreach ($events as $event) {
     error_log('Failed! '. $response->getHTTPStatus . ' ' .
                                   $response->getRawBody());
     }
-continue;
 }
 
-//　２つ目の質問。勤務地の都道府県を受取
-  foreach ($events as $event) {
-    if (!($event instanceof \LINE\LINEBot\Event\MessageEvent)) {
-        error_log('Non message event has come');
-        continue;
-    }
-    if (!($event instanceof \LINE\LINEBot\Event\MessageEvent\TextMessage)) {
-      error_log('Non message event has come');
-      continue;
-    }
 
-    //　入力待ち
-    $line = fgets(STDIN);
-
-    //　10秒待機
-    sleep(10);
-
-    // オウム返し
-    $bot->replyText($event->getReplyToken(), $event->getText());
-
-    //　ステータスコードを更新
-    $statuscode = 1;
-
-    //　自宅の広さに関する質問
-    $message2 = 'ご自宅の広さを「畳」で入力してください。';
-
-    $response2 = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
-                                    TextMessageBuilder($message2));
-      if(!$response2->isSucceeded()){
-      error_log('Failed! '. $response2->getHTTPStatus . ' ' .
-                                  $response2->getRawBody());
-      }
-
-    $checkreply = "foreach①に戻りました。処理を終了します。";
-    $response3 = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
-                                  TextMessageBuilder($checkreply));
-      if(!$response3->isSucceeded()){
-      error_log('Failed! '. $response3->getHTTPStatus . ' ' .
-                                  $response3->getRawBody());
-  }
-
-
-//　foreach②の終わり
-}
-
-//　foreach①の終わり
-//}
 ?>
