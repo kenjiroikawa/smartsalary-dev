@@ -232,6 +232,8 @@ foreach ($events as $event) {
   $space = $parameter[1];
   $before_slary = $parameter[2];
   $before_bonus = $parameter[3];
+  $houserent = $parameter[4];
+  $ages = $parameter[5];
 
   if($location == '東京都'){
   $housebenefit = 2590;
@@ -259,11 +261,38 @@ foreach ($events as $event) {
   exit;
   }
 
+  if($before_slary >= 58000 && $uranai_bangou < 63000){
+  $health_insurance_expense_nomal = 2871;
+  $health_insurance_expense_kaigo = 3326;
+  $pension_premiums = 8052;
+  }elseif($before_slary >= 63000 && $uranai_bangou < 73000){
+  $health_insurance_expense_nomal = 3366;
+  $health_insurance_expense_kaigo = 3899;
+  $pension_premiums = 8052;
+  }else{
+    $health_insurance_expense_nomal = 15000;
+    $health_insurance_expense_kaigo = 18000;
+    $pension_premiums = 20000;
+  }
+
+
+
   $calculation[] = $housebenefit; // [0] 住宅利益
   $calculation[] = $space * $housebenefit; // [1] 現物支給額
   $calculation[] = $before_slary; // [2] 月額給与
   $calculation[] = $before_bonus; // [3] 賞与
   $calculation[] = $calculation[2] * 12 + $calculation[3]; // [4] スマートサラリー導入前の年収
+
+  if($ages < 40){
+    $calculation[] = $health_insurance_expense_nomal; // [5] 40歳未満　健康保険料
+  }else{
+    $calculation[] = $health_insurance_expense_kaigo; // [5] 40歳以上　健康保険料（介護保険料加算）
+  }
+
+  $calculation[] = $pension_premiums; // [6] 厚生年金保険料
+
+
+
 
   $message1 = "勤務地：$parameter[0]\n\n住宅利益：$calculation[0]円/1畳\n広さ：$parameter[1]畳\n\n現物支給額は$calculation[1]円となります。";
 
