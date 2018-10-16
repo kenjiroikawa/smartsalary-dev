@@ -228,13 +228,7 @@ foreach ($events as $event) {
   //parametesを分解
   $parameter = explode(",",$parameters);
 
-  $message = [
-          'replyToken' => 'token',
-          'messages' => [
-              ['type' => 'text', 'text' => "$parameter[0]"],
-              ['type' => 'text', 'text' => "$parameter[1]"],
-          ]
-      ];
+  $message = $parameter[0];
 
   //　勤務地の都道府県に関する質問
   //$message = '勤務地の都道府県を入力してください。';
