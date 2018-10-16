@@ -261,11 +261,11 @@ foreach ($events as $event) {
   exit;
   }
 
-  if($before_slary >= 58000 && $uranai_bangou < 63000){
+  if($before_slary >= 58000 && $before_slary < 63000){
   $health_insurance_expense_nomal = 2871;
   $health_insurance_expense_kaigo = 3326;
   $pension_premiums = 8052;
-  }elseif($before_slary >= 63000 && $uranai_bangou < 73000){
+  }elseif($before_slary >= 63000 && $before_slary < 73000){
   $health_insurance_expense_nomal = 3366;
   $health_insurance_expense_kaigo = 3899;
   $pension_premiums = 8052;
