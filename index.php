@@ -235,8 +235,17 @@ foreach ($events as $event) {
   $housebenefit = 2590;
   }elseif($location == '神奈川県'){
   $housebenefit = 2070;
-  }
-  else{
+  }elseif($location == '千葉県'){
+  $housebenefit = 1700;
+  }elseif($location == '埼玉県'){
+  $housebenefit = 1750;
+  }elseif($location == '茨城県'){
+  $housebenefit = 1270;
+  }elseif($location == '群馬県'){
+  $housebenefit = 1170;
+  }elseif($location == '栃木県'){
+  $housebenefit = 1310;
+  }else{
     $exception = "申し訳ございません。シミュレーション対象外の地域です。";
     $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
                                       TextMessageBuilder($exception));
@@ -248,14 +257,23 @@ foreach ($events as $event) {
   exit;
   }
 
-  $calculation[] = $housebenefit;
-  $calculation[] = $space * $housebenefit;
+  $calculation[] = $housebenefit; // [0] 住宅利益
+  $calculation[] = $space * $housebenefit; // [1] 現物支給額
+  $calculation[] = 40; // [2] 月額給与
+  $calculation[] = 100; // [3] 賞与
+  $calculation[] = $calculation[2] * $calculation[3]; // [4] スマートサラリー導入前の年収
 
-  $message1 = "勤務地は　$parameter[0]　です。<br />住宅利益は　$calculation[0]　です。";
-  $message2 = "広さは　$parameter[1]　です。";
-  $message3 = "現物支給額は　$calculation[1]　です。";
+  $message1 = "勤務地：$parameter[0]\n
+              $parameter[0]の住宅利益は1畳あたり$calculation[0]\n
+              広さは　$parameter[1]\n
+              現物支給額「$calculation[1]」となります。";
 
-  // メッセージ1をユーザーID宛にプッシュ
+  $message2 = "スマートサラリー導入前\n
+               給与：$parameter[2]万円\n
+               賞与：$parameter[3]万円\n
+               年収：$parameter[4]万円\n";
+
+  // 現物支給に関するメッセージ1をユーザーID宛にプッシュ
   $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
                                     TextMessageBuilder($message1));
 
@@ -273,14 +291,14 @@ foreach ($events as $event) {
                                   $response->getRawBody());
     }
 
-    // メッセージ2をユーザーID宛にプッシュ
-    $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
-                                      TextMessageBuilder($message3));
+  // メッセージ2をユーザーID宛にプッシュ
+  $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
+                                    TextMessageBuilder($message3));
 
-      if(!$response->isSucceeded()){
-      error_log('Failed! '. $response->getHTTPStatus . ' ' .
-                                    $response->getRawBody());
-      }
+    if(!$response->isSucceeded()){
+    error_log('Failed! '. $response->getHTTPStatus . ' ' .
+                                  $response->getRawBody());
+    }
 
 
 }
