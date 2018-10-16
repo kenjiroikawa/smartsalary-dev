@@ -229,15 +229,16 @@ foreach ($events as $event) {
   $parameter = explode("、",$parameters);
 
   $location = "勤務地は　$parameter[0]　です。";
-
-  //　勤務地の都道府県に関する質問
-  //$message = '勤務地の都道府県を入力してください。';
-
+  $space = "広さは　$parameter[1]　です。";
 
 
   // メッセージをユーザーID宛にプッシュ
   $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
                                     TextMessageBuilder($location));
+
+  $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
+                                    TextMessageBuilder($space));
+
     if(!$response->isSucceeded()){
     error_log('Failed! '. $response->getHTTPStatus . ' ' .
                                   $response->getRawBody());
