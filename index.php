@@ -295,13 +295,14 @@ foreach ($events as $event) {
   $calculation[] = $pension_premiums; // [7] 厚生年金保険料
   $calculation[] = $payment_reduce; // [8] 家賃×0.8
   $calculation[] = $after_salary; // [9] スマートサラリー導入後の給与
+  $calculation[] = $houserent; // [10] 家賃
 
   $before_disposable_income = $parameter[2] - $calculation[6] - $calculation[7] - $parameter[4];
-  $calculation[] = $before_disposable_income; // [10] スマートサラリー導入前の可処分所得
+  $calculation[] = $before_disposable_income; // [11] スマートサラリー導入前の可処分所得
 
   $message1 = "勤務地：$parameter[0]\n\n住宅利益：$calculation[0]円/1畳\n広さ：$parameter[1]畳\n\n現物支給額換算：$calculation[1]円";
 
-  $message2 = "スマートサラリー導入前\n給与：$calculation[2]円\n賞与：$calculation[3]円\n年収：$calculation[4]円\n\n年齢：$calculation[5]歳\n健康保険料：$calculation[6]円\n厚生年金保険料：$calculation[7]円\n\n家賃支払い後の可処分所得：$calculation[10]円";
+  $message2 = "スマートサラリー導入前\n家賃：$calculation[10]円\n給与：$calculation[2]円\n賞与：$calculation[3]円\n年収：$calculation[4]円\n\n年齢：$calculation[5]歳\n健康保険料：$calculation[6]円\n厚生年金保険料：$calculation[7]円\n\n家賃支払い後の可処分所得：$calculation[10]円";
 
   $message3 = "スマートサラリー導入後\n\n家賃の8割（= $calculation[8]円）を差し引き\n導入後の給与：$calculation[9]円";
 
