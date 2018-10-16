@@ -250,9 +250,9 @@ foreach ($events as $event) {
 
   $genbutsusikyu = $space * $housebenefit;
 
-  $message1 = "勤務地は　$parameter[0]　です。住宅利益は　$housebenefit　です。";
+  $message1 = "勤務地は　$parameter[0]　です。住宅利益は　$housebenefit[0]　です。";
   $message2 = "広さは　$parameter[1]　です。";
-  $message3 = "現物支給額は　$genbutsusikyu　です。";
+  $message3 = "現物支給額は　$genbutsusikyu[0]　です。";
 
   // メッセージ1をユーザーID宛にプッシュ
   $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
