@@ -226,9 +226,9 @@ foreach ($events as $event) {
   $userId = $event->getUserId();
 
   //parametesを分解
-  $parameter = explode(",",$parameters);
+  $parameter = explode("、",$parameters);
 
-  $message = $parameter[0];
+  $location = "勤務地は　$parameter[0]　です。";
 
   //　勤務地の都道府県に関する質問
   //$message = '勤務地の都道府県を入力してください。';
@@ -237,7 +237,7 @@ foreach ($events as $event) {
 
   // メッセージをユーザーID宛にプッシュ
   $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
-                                    TextMessageBuilder($message));
+                                    TextMessageBuilder($location));
     if(!$response->isSucceeded()){
     error_log('Failed! '. $response->getHTTPStatus . ' ' .
                                   $response->getRawBody());
