@@ -248,9 +248,9 @@ foreach ($events as $event) {
   exit;
   }
 
-  $genbutsusikyu = $parameter[1] * $housebenefit;
+  $genbutsusikyu = $space * $housebenefit;
 
-  $message1 = "勤務地は　$parameter[0]　です。";
+  $message1 = "勤務地は　$parameter[0]　です。住宅利益は　$housebenefit　です。";
   $message2 = "広さは　$parameter[1]　です。";
   $message3 = "現物支給額は　$genbutsusikyu　です。";
 
