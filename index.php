@@ -282,7 +282,7 @@ foreach ($events as $event) {
   $calculation[] = $before_slary; // [2] 月額給与
   $calculation[] = $before_bonus; // [3] 賞与
   $calculation[] = $calculation[2] * 12 + $calculation[3]; // [4] スマートサラリー導入前の年収
-  $calculation[] = $ages // [5] 年齢
+  $calculation[] = $ages; // [5] 年齢
   if($ages < 40){
     $calculation[] = $health_insurance_expense_nomal; // [6] 40歳未満　健康保険料
   }else{
