@@ -231,6 +231,25 @@ foreach ($events as $event) {
   $location = "勤務地は　$parameter[0]　です。";
   $space = "広さは　$parameter[1]　です。";
 
+  if($location == '東京都'){
+  $housebenefit = 2590;
+  }elseif($location == '神奈川県'){
+  $housebenefit = 2070;
+  }
+  else{
+    $exception = "申し訳ございません。シミュレーション対象外の地域です。"
+    $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
+                                      TextMessageBuilder($exception));
+
+      if(!$response->isSucceeded()){
+      error_log('Failed! '. $response->getHTTPStatus . ' ' .
+                                    $response->getRawBody());
+      }
+  exit;
+  }
+
+  $genbutsusikyu
+
 
   // メッセージ1をユーザーID宛にプッシュ
   $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
