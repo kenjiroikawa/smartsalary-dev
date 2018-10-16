@@ -205,8 +205,6 @@ function replyCarouselTemplate($bot, $replyToken, $alternativeText,
   }
 }
 
-$statuscode = 0;
-
 foreach ($events as $event) {
   if (!($event instanceof \LINE\LINEBot\Event\MessageEvent)) {
       error_log('Non message event has come');
@@ -292,13 +290,19 @@ foreach ($events as $event) {
   $calculation[] = $pension_premiums; // [7] 厚生年金保険料
 
 
+  $payment_reduce = $houserent * 0.8;
+  $after_salary = $before_salary - $payment_reduce;
 
+  $calculation[] = $payment_reduce; // [8] 家賃×0.8
+  $calculation[] = $after_salary; // [9] スマートサラリー導入後の給与
 
-  $message1 = "勤務地：$parameter[0]\n\n住宅利益：$calculation[0]円/1畳\n広さ：$parameter[1]畳\n\n現物支給額は$calculation[1]円となります。";
+  $message1 = "勤務地：$parameter[0]\n\n住宅利益：$calculation[0]円/1畳\n広さ：$parameter[1]畳\n\n現物支給額換算：$calculation[1]円";
 
   $message2 = "スマートサラリー導入前\n給与：$calculation[2]円\n賞与：$calculation[3]円\n年収：$calculation[4]円\n\n年齢：$calculation[5]歳\n健康保険料：$calculation[6]円\n厚生年金保険料：$calculation[7]円";
 
-  // 現物支給に関するメッセージ1をユーザーID宛にプッシュ
+  $message3 = "スマートサラリー導入後\n\n家賃の8割（= $calculation[8]円）を差し引き\n導入後の給与：$calculation[9]円";
+
+  // メッセージ1をユーザーID宛にプッシュ
   $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
                                     TextMessageBuilder($message1));
 
@@ -316,7 +320,7 @@ foreach ($events as $event) {
                                   $response->getRawBody());
     }
 
-  // メッセージ2をユーザーID宛にプッシュ
+  // メッセージ3をユーザーID宛にプッシュ
   $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
                                     TextMessageBuilder($message3));
 
