@@ -261,10 +261,10 @@ foreach ($events as $event) {
   $calculation[] = $space * $housebenefit; // [1] 現物支給額
   $calculation[] = 40; // [2] 月額給与
   $calculation[] = 100; // [3] 賞与
-  $calculation[] = $calculation[2] * $calculation[3]; // [4] スマートサラリー導入前の年収
+  $calculation[] = $calculation[2] * 12 + $calculation[3]; // [4] スマートサラリー導入前の年収
 
-  $message1 = "勤務地：$parameter[0]\n$parameter[0]の住宅利益は1畳あたり$calculation[0]円、広さは$parameter[1]畳のため\n
-              現物支給額$calculation[1]円となります。";
+  $message1 = "勤務地：$parameter[0]\n住宅利益は$calculation[0]円/1畳\n広さは$parameter[1]畳\n
+              現物支給額は$calculation[1]円となります。";
 
   $message2 = "スマートサラリー導入前\n給与：$calculation[2]万円\n賞与：$calculation[3]万円\n年収：$calculation[4]万円\n";
 
