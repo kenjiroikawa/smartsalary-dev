@@ -228,8 +228,8 @@ foreach ($events as $event) {
   //parametesを分解
   $parameter = explode("、",$parameters);
 
-  $location = "勤務地は　$parameter[0]　です。";
-  $space = "広さは　$parameter[1]　です。";
+  $location = $parameter[0];
+  $space = $parameter[1];
 
   if($location == '東京都'){
   $housebenefit = 2590;
@@ -237,7 +237,7 @@ foreach ($events as $event) {
   $housebenefit = 2070;
   }
   else{
-    $exception = "申し訳ございません。シミュレーション対象外の地域です。"
+    $exception = "申し訳ございません。シミュレーション対象外の地域です。";
     $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
                                       TextMessageBuilder($exception));
 
@@ -248,12 +248,15 @@ foreach ($events as $event) {
   exit;
   }
 
-  $genbutsusikyu
+  $genbutsusikyu = $parameter[1] * $housebenefit;
 
+  $message1 = "勤務地は　$parameter[0]　です。";
+  $message2 = "広さは　$parameter[1]　です。";
+  $message3 = "現物支給額は　$genbutsusikyu　です。";
 
   // メッセージ1をユーザーID宛にプッシュ
   $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
-                                    TextMessageBuilder($location));
+                                    TextMessageBuilder($message1));
 
     if(!$response->isSucceeded()){
     error_log('Failed! '. $response->getHTTPStatus . ' ' .
@@ -262,12 +265,22 @@ foreach ($events as $event) {
 
   // メッセージ2をユーザーID宛にプッシュ
   $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
-                                    TextMessageBuilder($space));
+                                    TextMessageBuilder($message2));
 
     if(!$response->isSucceeded()){
     error_log('Failed! '. $response->getHTTPStatus . ' ' .
                                   $response->getRawBody());
     }
+
+    // メッセージ2をユーザーID宛にプッシュ
+    $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
+                                      TextMessageBuilder($message3));
+
+      if(!$response->isSucceeded()){
+      error_log('Failed! '. $response->getHTTPStatus . ' ' .
+                                    $response->getRawBody());
+      }
+
 
 }
 
