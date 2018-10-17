@@ -308,7 +308,7 @@ foreach ($events as $event) {
 
   // メッセージ1をユーザーID宛にプッシュ
 
-  $response = $bot->replyMessage($replyToken, new \LINE\LINEBot\MessageBuilder\
+  $response = $bot->replyMessage($event->getReplyToken(), new \LINE\LINEBot\MessageBuilder\
                                     TextMessageBuilder($message1));
 
   if (!$response->isSucceeded()){
