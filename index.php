@@ -218,7 +218,7 @@ foreach ($events as $event) {
 
   // オウム返し
   $parameters = $event->getText();
-  $bot->replyText($event->getReplyToken(), $parameters);
+//  $bot->replyText($event->getReplyToken(), $parameters);
 
   //　ユーザーIDを取得
   $userId = $event->getUserId();
