@@ -243,7 +243,7 @@ foreach ($events as $event) {
   $payment_reduce = $houserent * 0.8;                          // 導入後：会社支払家賃
   $rest_payment = $houserent * 0.2;                            // 導入後：本人支払家賃
   $after_salary = $parameter[2] - $payment_reduce;             // 導入後：給与
-  $after_yearly_income = $after_slary * 12 + $before_bonus;    // 導入後：年収
+  $after_yearly_income = $after_salary + $before_bonus;    // 導入後：年収
 
 
 
@@ -557,199 +557,199 @@ $before_disposable_income = $parameter[2] - $before_health_insurance_expense - $
 
 
 // 導入後：健康保険料の計算 開始-----------------------------------------
-    if($after_slary >= 58000 && $after_slary < 63000){
+    if($after_salary >= 58000 && $after_salary < 63000){
       $after_health_insurance_expense_nomal = 2871;
       $after_health_insurance_expense_kaigo = 3326;
                     $after_pension_premiums = 8052;
-    }elseif($after_slary >= 63000 && $after_slary < 73000){
+    }elseif($after_salary >= 63000 && $after_salary < 73000){
       $after_health_insurance_expense_nomal = 3366;
       $after_health_insurance_expense_kaigo = 3899;
                     $after_pension_premiums = 8052;
-    }elseif($after_slary >= 73000 && $after_slary < 83000){
+    }elseif($after_salary >= 73000 && $after_salary < 83000){
       $after_health_insurance_expense_nomal = 3861;
       $after_health_insurance_expense_kaigo = 4473;
                     $after_pension_premiums = 8052;
-    }elseif($after_slary >= 83000 && $after_slary < 93000){
+    }elseif($after_salary >= 83000 && $after_salary < 93000){
       $after_health_insurance_expense_nomal = 4356;
       $after_health_insurance_expense_kaigo = 5046;
                     $after_pension_premiums = 8052;
-    }elseif($after_slary >= 93000 && $after_slary < 101000){
+    }elseif($after_salary >= 93000 && $after_salary < 101000){
       $after_health_insurance_expense_nomal = 4851;
       $after_health_insurance_expense_kaigo = 5620;
                     $after_pension_premiums = 8967;
-    }elseif($after_slary >= 101000 && $after_slary < 107000){
+    }elseif($after_salary >= 101000 && $after_salary < 107000){
       $after_health_insurance_expense_nomal = 5148;
       $after_health_insurance_expense_kaigo = 5964;
                     $after_pension_premiums = 9516;
-    }elseif($after_slary >= 107000 && $after_slary < 114000){
+    }elseif($after_salary >= 107000 && $after_salary < 114000){
       $after_health_insurance_expense_nomal = 5445;
       $after_health_insurance_expense_kaigo = 6308;
                     $after_pension_premiums = 10065;
-    }elseif($after_slary >= 114000 && $after_slary < 122000){
+    }elseif($after_salary >= 114000 && $after_salary < 122000){
       $after_health_insurance_expense_nomal = 5841;
       $after_health_insurance_expense_kaigo = 6767;
                     $after_pension_premiums = 10797;
-    }elseif($after_slary >= 122000 && $after_slary < 130000){
+    }elseif($after_salary >= 122000 && $after_salary < 130000){
       $after_health_insurance_expense_nomal = 6237;
       $after_health_insurance_expense_kaigo = 7226;
                     $after_pension_premiums = 11529;
-    }elseif($after_slary >= 130000 && $after_slary < 138000){
+    }elseif($after_salary >= 130000 && $after_salary < 138000){
       $after_health_insurance_expense_nomal = 6633;
       $after_health_insurance_expense_kaigo = 7684;
                     $after_pension_premiums = 12261;
-    }elseif($after_slary >= 138000 && $after_slary < 146000){
+    }elseif($after_salary >= 138000 && $after_salary < 146000){
       $after_health_insurance_expense_nomal = 7029;
       $after_health_insurance_expense_kaigo = 8143;
                     $after_pension_premiums = 12993;
-    }elseif($after_slary >= 146000 && $after_slary < 155000){
+    }elseif($after_salary >= 146000 && $after_salary < 155000){
       $after_health_insurance_expense_nomal = 7425;
       $after_health_insurance_expense_kaigo = 8602;
                     $after_pension_premiums = 13725;
-    }elseif($after_slary >= 155000 && $after_slary < 165000){
+    }elseif($after_salary >= 155000 && $after_salary < 165000){
       $after_health_insurance_expense_nomal = 7920;
       $after_health_insurance_expense_kaigo = 9176;
                     $after_pension_premiums = 14640;
-    }elseif($after_slary >= 165000 && $after_slary < 175000){
+    }elseif($after_salary >= 165000 && $after_salary < 175000){
       $after_health_insurance_expense_nomal = 8415;
       $after_health_insurance_expense_kaigo = 9749;
                     $after_pension_premiums = 15555;
-    }elseif($after_slary >= 175000 && $after_slary < 185000){
+    }elseif($after_salary >= 175000 && $after_salary < 185000){
       $after_health_insurance_expense_nomal = 8910;
       $after_health_insurance_expense_kaigo = 10323;
                     $after_pension_premiums = 16470;
-    }elseif($after_slary >= 185000 && $after_slary < 195000){
+    }elseif($after_salary >= 185000 && $after_salary < 195000){
       $after_health_insurance_expense_nomal = 9405;
       $after_health_insurance_expense_kaigo = 10896;
                     $after_pension_premiums = 17385;
-    }elseif($after_slary >= 195000 && $after_slary < 210000){
+    }elseif($after_salary >= 195000 && $after_salary < 210000){
       $after_health_insurance_expense_nomal = 9900;
       $after_health_insurance_expense_kaigo = 11470;
                     $after_pension_premiums = 18300;
-    }elseif($after_slary >= 210000 && $after_slary < 230000){
+    }elseif($after_salary >= 210000 && $after_salary < 230000){
       $after_health_insurance_expense_nomal = 10890;
       $after_health_insurance_expense_kaigo = 12617;
                     $after_pension_premiums = 20130;
-    }elseif($after_slary >= 230000 && $after_slary < 250000){
+    }elseif($after_salary >= 230000 && $after_salary < 250000){
       $after_health_insurance_expense_nomal = 11880;
       $after_health_insurance_expense_kaigo = 13764;
                     $after_pension_premiums = 21960;
-    }elseif($after_slary >= 250000 && $after_slary < 270000){
+    }elseif($after_salary >= 250000 && $after_salary < 270000){
       $after_health_insurance_expense_nomal = 12870;
       $after_health_insurance_expense_kaigo = 14911;
                     $after_pension_premiums = 23790;
-    }elseif($after_slary >= 270000 && $after_slary < 290000){
+    }elseif($after_salary >= 270000 && $after_salary < 290000){
       $after_health_insurance_expense_nomal = 13860;
       $after_health_insurance_expense_kaigo = 16058;
                     $after_pension_premiums = 25620;
-    }elseif($after_slary >= 290000 && $after_slary < 310000){
+    }elseif($after_salary >= 290000 && $after_salary < 310000){
       $after_health_insurance_expense_nomal = 14850;
       $after_health_insurance_expense_kaigo = 17205;
                     $after_pension_premiums = 27450;
-    }elseif($after_slary >= 310000 && $after_slary < 330000){
+    }elseif($after_salary >= 310000 && $after_salary < 330000){
       $after_health_insurance_expense_nomal = 15840;
       $after_health_insurance_expense_kaigo = 18352;
                     $after_pension_premiums = 29280;
-    }elseif($after_slary >= 330000 && $after_slary < 350000){
+    }elseif($after_salary >= 330000 && $after_salary < 350000){
       $after_health_insurance_expense_nomal = 16830;
       $after_health_insurance_expense_kaigo = 19499;
                     $after_pension_premiums = 31110;
-    }elseif($after_slary >= 350000 && $after_slary < 370000){
+    }elseif($after_salary >= 350000 && $after_salary < 370000){
       $after_health_insurance_expense_nomal = 17820;
       $after_health_insurance_expense_kaigo = 20646;
                     $after_pension_premiums = 32940;
-    }elseif($after_slary >= 370000 && $after_slary < 395000){
+    }elseif($after_salary >= 370000 && $after_salary < 395000){
       $after_health_insurance_expense_nomal = 18810;
       $after_health_insurance_expense_kaigo = 21793;
                     $after_pension_premiums = 34770;
-    }elseif($after_slary >= 395000 && $after_slary < 425000){
+    }elseif($after_salary >= 395000 && $after_salary < 425000){
       $after_health_insurance_expense_nomal = 20295;
       $after_health_insurance_expense_kaigo = 23513;
                     $after_pension_premiums = 37515;
-    }elseif($after_slary >= 425000 && $after_slary < 455000){
+    }elseif($after_salary >= 425000 && $after_salary < 455000){
       $after_health_insurance_expense_nomal = 21780;
       $after_health_insurance_expense_kaigo = 25234;
                     $after_pension_premiums = 40260;
-    }elseif($after_slary >= 455000 && $after_slary < 485000){
+    }elseif($after_salary >= 455000 && $after_salary < 485000){
       $after_health_insurance_expense_nomal = 23265;
       $after_health_insurance_expense_kaigo = 26954;
                     $after_pension_premiums = 43005;
-    }elseif($after_slary >= 485000 && $after_slary < 515000){
+    }elseif($after_salary >= 485000 && $after_salary < 515000){
       $after_health_insurance_expense_nomal = 24750;
       $after_health_insurance_expense_kaigo = 28675;
                     $after_pension_premiums = 45750;
-    }elseif($after_slary >= 515000 && $after_slary < 545000){
+    }elseif($after_salary >= 515000 && $after_salary < 545000){
       $after_health_insurance_expense_nomal = 26235;
       $after_health_insurance_expense_kaigo = 30395;
                     $after_pension_premiums = 48495;
-    }elseif($after_slary >= 545000 && $after_slary < 575000){
+    }elseif($after_salary >= 545000 && $after_salary < 575000){
       $after_health_insurance_expense_nomal = 27720;
       $after_health_insurance_expense_kaigo = 32116;
                     $after_pension_premiums = 51240;
-    }elseif($after_slary >= 575000 && $after_slary < 605000){
+    }elseif($after_salary >= 575000 && $after_salary < 605000){
       $after_health_insurance_expense_nomal = 29205;
       $after_health_insurance_expense_kaigo = 33836;
                     $after_pension_premiums = 53985;
-    }elseif($after_slary >= 605000 && $after_slary < 635000){
+    }elseif($after_salary >= 605000 && $after_salary < 635000){
       $after_health_insurance_expense_nomal = 30690;
       $after_health_insurance_expense_kaigo = 35557;
                     $after_pension_premiums = 56730;
-    }elseif($after_slary >= 635000 && $after_slary < 665000){
+    }elseif($after_salary >= 635000 && $after_salary < 665000){
       $after_health_insurance_expense_nomal = 32175;
       $after_health_insurance_expense_kaigo = 37277;
                     $after_pension_premiums = 56730;
-    }elseif($after_slary >= 665000 && $after_slary < 695000){
+    }elseif($after_salary >= 665000 && $after_salary < 695000){
       $after_health_insurance_expense_nomal = 33660;
       $after_health_insurance_expense_kaigo = 38998;
                     $after_pension_premiums = 56730;
-    }elseif($after_slary >= 695000 && $after_slary < 730000){
+    }elseif($after_salary >= 695000 && $after_salary < 730000){
       $after_health_insurance_expense_nomal = 35145;
       $after_health_insurance_expense_kaigo = 40718;
                     $after_pension_premiums = 56730;
-    }elseif($after_slary >= 730000 && $after_slary < 770000){
+    }elseif($after_salary >= 730000 && $after_salary < 770000){
       $after_health_insurance_expense_nomal = 37125;
       $after_health_insurance_expense_kaigo = 43012;
                     $after_pension_premiums = 56730;
-    }elseif($after_slary >= 770000 && $after_slary < 810000){
+    }elseif($after_salary >= 770000 && $after_salary < 810000){
       $after_health_insurance_expense_nomal = 39105;
       $after_health_insurance_expense_kaigo = 45306;
                     $after_pension_premiums = 56730;
-    }elseif($after_slary >= 810000 && $after_slary < 855000){
+    }elseif($after_salary >= 810000 && $after_salary < 855000){
       $after_health_insurance_expense_nomal = 41085;
       $after_health_insurance_expense_kaigo = 47600;
                     $after_pension_premiums = 56730;
-    }elseif($after_slary >= 855000 && $after_slary < 905000){
+    }elseif($after_salary >= 855000 && $after_salary < 905000){
       $after_health_insurance_expense_nomal = 43560;
       $after_health_insurance_expense_kaigo = 50468;
                     $after_pension_premiums = 56730;
-    }elseif($after_slary >= 905000 && $after_slary < 955000){
+    }elseif($after_salary >= 905000 && $after_salary < 955000){
       $after_health_insurance_expense_nomal = 46035;
       $after_health_insurance_expense_kaigo = 53335;
                     $after_pension_premiums = 56730;
-    }elseif($after_slary >= 955000 && $after_slary < 1005000){
+    }elseif($after_salary >= 955000 && $after_salary < 1005000){
       $after_health_insurance_expense_nomal = 48510;
       $after_health_insurance_expense_kaigo = 56203;
                     $after_pension_premiums = 56730;
-    }elseif($after_slary >= 1005000 && $after_slary < 1055000){
+    }elseif($after_salary >= 1005000 && $after_salary < 1055000){
       $after_health_insurance_expense_nomal = 50985;
       $after_health_insurance_expense_kaigo = 59070;
                     $after_pension_premiums = 56730;
-    }elseif($after_slary >= 1055000 && $after_slary < 1115000){
+    }elseif($after_salary >= 1055000 && $after_salary < 1115000){
       $after_health_insurance_expense_nomal = 53955;
       $after_health_insurance_expense_kaigo = 62511;
                     $after_pension_premiums = 56730;
-    }elseif($after_slary >= 1115000 && $after_slary < 1175000){
+    }elseif($after_salary >= 1115000 && $after_salary < 1175000){
       $after_health_insurance_expense_nomal = 56925;
       $after_health_insurance_expense_kaigo = 65952;
                     $after_pension_premiums = 56730;
-    }elseif($after_slary >= 1115000 && $after_slary < 1235000){
+    }elseif($after_salary >= 1115000 && $after_salary < 1235000){
       $after_health_insurance_expense_nomal = 59895;
       $after_health_insurance_expense_kaigo = 69393;
                     $after_pension_premiums = 56730;
-    }elseif($after_slary >= 1235000 && $after_slary < 1295000){
+    }elseif($after_salary >= 1235000 && $after_salary < 1295000){
       $after_health_insurance_expense_nomal = 62865;
       $after_health_insurance_expense_kaigo = 72834;
                     $after_pension_premiums = 56730;
-    }elseif($after_slary >= 1295000 && $after_slary < 1355000){
+    }elseif($after_salary >= 1295000 && $after_salary < 1355000){
       $after_health_insurance_expense_nomal = 65835;
       $after_health_insurance_expense_kaigo = 76275;
                     $after_pension_premiums = 56730;
@@ -769,7 +769,7 @@ $before_disposable_income = $parameter[2] - $before_health_insurance_expense - $
 
 
 // 導入後：社保控除後の金額
-  $after_pretax_salary = $after_slary - $after_health_insurance_expense - $after_pension_premiums;
+  $after_pretax_salary = $after_salary - $after_health_insurance_expense - $after_pension_premiums;
 
 // 導入後：社保控除後の金額に応じた源泉徴収額の計算 開始----------------------
   if($after_pretax_salary >= 58000 && $after_pretax_salary < 400000){
@@ -829,7 +829,7 @@ if($dependants == 0 ){
   $after_inhabitant_tax = 8000;
 
 // 導入後：社保、税金、家賃控除後の可処分所得の計算
-  $after_disposable_income = $after_slary - $after_health_insurance_expense - $after_pension_premiums - $after_income_tax - $after_inhabitant_tax - $rest_payment;
+  $after_disposable_income = $after_salary - $after_health_insurance_expense - $after_pension_premiums - $after_income_tax - $after_inhabitant_tax - $rest_payment;
 
 // 導入前、導入後の可処分所得の増加分の計算
   $effect = $after_disposable_income - $before_disposable_income;
@@ -871,18 +871,12 @@ if($dependants == 0 ){
 
 
 
-  $message1 = "シミュレーション結果\n\n基本情報\n年齢：$calculation[0]歳\n配偶者：$calculation[1]\n扶養家族：$calculation[2]人\n\n家賃：$calculation[3]円\n勤務地の都道府県：$calculation[4]\n都道府県毎の住宅利益：$calculation[5]円/1畳\n広さ：$calculation[6]畳\n現物支給額換算：$calculation[7]円";
+  $message1 = "シミュレーション結果\n\n基本情報\n年齢：$calculation[0]歳\n配偶者：$calculation[1]\n扶養家族：$calculation[2]人\n\n家賃：$calculation[3]円\n勤務地の都道府県：$calculation[4]円\n都道府県毎の住宅利益：$calculation[5]円/1畳\n広さ：$calculation[6]畳\n現物支給額換算：$calculation[7]円";
 
   $message2 = "導入前\n月額給与：$calculation[8]円\n年間賞与：$calculation[9]円\n年収：$calculation[10]円\n
 健康保険料：$calculation[11]円\n厚生年金保険料：$calculation[12]円\n所得税：$calculation[13]円\n住民税：$calculation[14]円\n社保、税金、家賃控除後の可処分所得：$calculation[15]円";
 
   $message3 = "導入後\n\n会社負担家賃（家賃×0.8）：$calculation[16]円\n本人負担家賃（家賃×0.2）：$calculation[17]円\n月額給与：$calculation[18]円\n年間賞与：$calculation[9]円\n年収：$calculation[19] 円\n健康保険料：$calculation[20]円\n厚生年金保険料：$calculation[21]円\n所得税：$calculation[22]円\n住民税：$calculation[23]円\n社保、税金、家賃控除後の可処分所得：$calculation[24]円\n\nスマートサラリー導入効果：$calculation[25]円\n";
-
-/*
-  $message2 = "スマートサラリー導入前\n家賃：$calculation[10]円\n給与：$calculation[2]円\n賞与：$calculation[3]円\n年収：$calculation[4]円\n\n年齢：$calculation[5]歳\n健康保険料：$calculation[6]円\n厚生年金保険料：$calculation[7]円\n所得税$calculation[7]円\n住民税$calculation[7]円\n\n家賃支払い後の可処分所得：$calculation[10]円";
-
-  $message3 = "スマートサラリー導入後\n\n家賃の8割（= $calculation[8]円）を差し引き\n導入後の給与：$calculation[9]円";
-*/
 
   // メッセージをユーザーに返信
 $bot->replyText($event->getReplyToken(), $message1, $message2, $message3);
