@@ -829,7 +829,7 @@ if($dependants == 0 ){
   $after_inhabitant_tax = 8000;
 
 // 導入後：社保、税金、家賃控除後の可処分所得の計算
-  $after_disposable_income = $after_slary - $after_health_insurance_expense - $after_pension_premiums - $after_income_tax - $after_inhabitant_tax - $rest_payment
+  $after_disposable_income = $after_slary - $after_health_insurance_expense - $after_pension_premiums - $after_income_tax - $after_inhabitant_tax - $rest_payment;
 
 // 導入前、導入後の可処分所得の増加分の計算
   $effect = $after_disposable_income - $before_disposable_income;
