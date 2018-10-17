@@ -216,9 +216,8 @@ foreach ($events as $event) {
   }
 
 
-  // オウム返し
+  // 入力情報を受取
   $parameters = $event->getText();
-//  $bot->replyText($event->getReplyToken(), $parameters);
 
   //　ユーザーIDを取得
   $userId = $event->getUserId();
@@ -308,6 +307,9 @@ foreach ($events as $event) {
 
   // メッセージ1をユーザーID宛にプッシュ
 
+$bot->replyText($event->getReplyToken(), $message1, $message2, $message3);
+
+/*
   $response = $bot->replyMessage($event->getReplyToken(), new \LINE\LINEBot\MessageBuilder\
                                     TextMessageBuilder($message1));
 
@@ -315,7 +317,7 @@ foreach ($events as $event) {
     error_log('Failed!'. $response->getHTTPStatus .' ' .
                             $response->getRawBody());
   }
-/*  $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
+  $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
                                     TextMessageBuilder($message1));
 
     if(!$response->isSucceeded()){
