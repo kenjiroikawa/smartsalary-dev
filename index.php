@@ -308,8 +308,11 @@ foreach ($events as $event) {
 
   // メッセージ1をユーザーID宛にプッシュ
 
-  $bot->replyText($event->getReplyToken(), $message1);
-
+  $response = $bot->replyMessage($replyToken, $message1);
+  if (!$response->isSucceeded()){
+    error_log('Failed!'. $response->getHTTPStatus .' ' .
+                            $response->getRawBody());
+  }
 /*  $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
                                     TextMessageBuilder($message1));
 
