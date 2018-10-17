@@ -253,7 +253,7 @@ foreach ($events as $event) {
   }elseif($location == '栃木県'){
   $housebenefit = 1310;
   }else{
-    $exception = "申し訳ございません。シミュレーション対象外の地域です。";
+    $exception = "申し訳ございません。シミュレーション対象外の地域です。\n対象の地域は、東京都・神奈川県・埼玉県・千葉県・茨城県・群馬県・栃木県となります。";
     $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
                                       TextMessageBuilder($exception));
 
@@ -307,13 +307,18 @@ foreach ($events as $event) {
   $message3 = "スマートサラリー導入後\n\n家賃の8割（= $calculation[8]円）を差し引き\n導入後の給与：$calculation[9]円";
 
   // メッセージ1をユーザーID宛にプッシュ
-  $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
+
+  $bot->replyText($event->getReplyToken(), $message1);
+
+/*  $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
                                     TextMessageBuilder($message1));
 
     if(!$response->isSucceeded()){
     error_log('Failed! '. $response->getHTTPStatus . ' ' .
                                   $response->getRawBody());
     }
+
+*/
 
   // メッセージ2をユーザーID宛にプッシュ
   $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
