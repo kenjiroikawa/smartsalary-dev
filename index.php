@@ -578,10 +578,10 @@ if($dependants == 0 ){
   $before_income_deduction = $basic_deduction + $partner_deduction + $dependant_deduction + $before_social_insurance_total;
 
   // 住民税計算用の課税対象金額の計算
-  $before_inhabitant_tax_yearly = $before_salary - $before_salary_deduction - $before_income_deduction ;
+  $before_inhabitant_tax_yearly = $before_yearly_income - $before_salary_deduction - $before_income_deduction ;
 
   // 月額住民税の計算
-  $before_inhabitant_tax = $before_inhabitant_tax_yearly / 12;
+  $before_inhabitant_tax = floor($before_inhabitant_tax_yearly / 12);
 // 導入前：住民税の計算 終了-----------------------------------------
 
 // 導入前：社保、税金、家賃控除後の可処分所得の計算
@@ -818,7 +818,7 @@ if($dependants == 0 ){
 
   $message3 = "導入後\n\n会社負担家賃（家賃×0.8）：$calculation[16]円\n本人負担家賃（家賃×0.2）：$calculation[17]円\n月額給与：$calculation[18]円\n年間賞与：$calculation[9]円\n年収：$calculation[19] 円\n健康保険料：$calculation[20]円\n厚生年金保険料：$calculation[21]円\n所得税：$calculation[22]円\n住民税：$calculation[23]円\n社保、税金、家賃控除後の可処分所得：$calculation[24]円\n\nスマートサラリー導入効果：$calculation[25]円\n";
 
-  $message4 = " //給与所得控除：$calculation[26]円\n所得控除：$calculation[27]円";
+  $message4 = " 給与所得控除：$calculation[26]円\n所得控除：$calculation[27]円";
   // メッセージをユーザーに返信
 $bot->replyText($event->getReplyToken(), $message1, $message2, $message3, $message4);
 
