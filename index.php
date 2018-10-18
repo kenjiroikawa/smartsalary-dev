@@ -557,21 +557,22 @@ if($dependants == 0 ){
 // 導入前：住民税の計算 開始-----------------------------------------
 
   // 給与所得控除の計算
-  if($before_salary < 1625000){
+  if($before_yearly_income < 1625000){
     $before_salary_deduction = 650000;
-  }elseif($before_salary >= 1625000 && $before_salary <= 1800000){
-    $before_salary_deduction = $before_salary * 0.4;
-  }elseif($before_salary > 1800000 && $before_salary <= 3600000){
-    $before_salary_deduction = $before_salary * 0.3 + 180000;
-  }elseif($before_salary > 3600000 && $before_salary <= 6600000){
-    $before_salary_deduction = $before_salary * 0.2 + 540000;
-  }elseif($before_salary > 6600000 && $before_salary <= 10000000){
-    $before_salary_deduction = $before_salary * 0.1 + 1200000;
-  }elseif($before_salary > 1625000 && $before_salary <= 1800000){
-    $before_salary_deduction = $before_salary * 0.4;
+  }elseif($before_yearly_income >= 1625000 && $before_yearly_income <= 1800000){
+    $before_salary_deduction = $before_yearly_income * 0.4;
+  }elseif($before_yearly_income > 1800000 && $before_yearly_income <= 3600000){
+    $before_salary_deduction = $before_yearly_income * 0.3 + 180000;
+  }elseif($before_yearly_income > 3600000 && $before_yearly_income <= 6600000){
+    $before_salary_deduction = $before_yearly_income * 0.2 + 540000;
+  }elseif($before_yearly_income > 6600000 && $before_yearly_income <= 10000000){
+    $before_salary_deduction = $before_yearly_income * 0.1 + 1200000;
+  }elseif($before_yearly_income > 1625000 && $before_yearly_income <= 1800000){
+    $before_salary_deduction = $before_yearly_income * 0.4;
   }else{
     $before_salary_deduction = 2200000;
   }
+
 
 
   //所得控除
@@ -818,7 +819,7 @@ if($dependants == 0 ){
 
   $message3 = "導入後\n\n会社負担家賃（家賃×0.8）：$calculation[16]円\n本人負担家賃（家賃×0.2）：$calculation[17]円\n月額給与：$calculation[18]円\n年間賞与：$calculation[9]円\n年収：$calculation[19] 円\n健康保険料：$calculation[20]円\n厚生年金保険料：$calculation[21]円\n所得税：$calculation[22]円\n住民税：$calculation[23]円\n社保、税金、家賃控除後の可処分所得：$calculation[24]円\n\nスマートサラリー導入効果：$calculation[25]円\n";
 
-  $message4 = " 給与所得控除：$calculation[26]円\n所得控除：$calculation[27]円";
+  $message4 = "給与所得控除：$calculation[26]円\n所得控除：$calculation[27]円";
   // メッセージをユーザーに返信
 $bot->replyText($event->getReplyToken(), $message1, $message2, $message3, $message4);
 
