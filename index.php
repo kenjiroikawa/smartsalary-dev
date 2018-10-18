@@ -242,11 +242,11 @@ foreach ($events as $event) {
     $error = "入力項目が不足しています。\n案内に沿って、8項目を入力してください。";
     $bot->replyText($event->getReplyToken(), $error);
     exit;
-  }elsif( substr_count($parameters, '、') > 7){
+/*  }elsif( substr_count($parameters, '、') > 7){
     $error = "入力に誤りがあります。\n案内に沿って、8項目を入力してください。";
     $bot->replyText($event->getReplyToken(), $error);
     exit;
-/*  }elsif(preg_match("/[^一-龠]/u",$location){
+  }elsif(preg_match("/[^一-龠]/u",$location){
     $error = "都道府県の入力に誤りがあります。";
     $bot->replyText($event->getReplyToken(), $error);
     exit;
