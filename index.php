@@ -523,14 +523,12 @@ foreach ($events as $event) {
     $before_dependant = [6550,5930,5320,5000,4500,4000,3500,3000];
   }elseif($before_pretax_salary >= 500000 && $before_pretax_salary < 1000000){
     $before_dependant = [16550,15930,15320,15000,14500,14000,13500,13000];
-  }elseif($before_pretax_salary >= 1000000 && $before_pretax_salary < 10000000){
+  }else{
     $before_dependant = [26550,25930,25320,25000,24500,24000,23500,23000];
 /*  }elseif($before_pretax_salary >=  && $before_pretax_salary < ){
     $before_dependant = [,,,,,,,];
   }elseif($before_pretax_salary >=  && $before_pretax_salary < ){
     $before_dependant = [,,,,,,,];*/
-  }else{
-    $before_dependant = [,,,,,,,];
   }
 //導入前：社保控除後の金額に応じた源泉徴収額の計算 終了----------------------
 
