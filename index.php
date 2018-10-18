@@ -270,17 +270,17 @@ foreach ($events as $event) {
 // 都道府県による住宅利益の分類 開始---------------------------------------
   if($location == '東京都' or $location == '東京'){
   $housebenefit = 2590;
-  }elseif($location == '神奈川県'){
+}elseif($location == '神奈川県' or $location == '神奈川'){
   $housebenefit = 2070;
-  }elseif($location == '千葉県'){
+}elseif($location == '千葉県' or $location == '千葉'){
   $housebenefit = 1700;
-  }elseif($location == '埼玉県'){
+}elseif($location == '埼玉県' or $location == '埼玉'){
   $housebenefit = 1750;
-  }elseif($location == '茨城県'){
+}elseif($location == '茨城県' or $location == '茨城'){
   $housebenefit = 1270;
-  }elseif($location == '群馬県'){
+}elseif($location == '群馬県' or $location == '群馬'){
   $housebenefit = 1170;
-  }elseif($location == '栃木県'){
+}elseif($location == '栃木県' or $location == '栃木'){
   $housebenefit = 1310;
   }else{
     $exception = "申し訳ございません。シミュレーション対象外の地域です。\n対象の地域は、東京都・神奈川県・埼玉県・千葉県・茨城県・群馬県・栃木県となります。";
@@ -511,54 +511,35 @@ foreach ($events as $event) {
   $before_pretax_salary = $before_slary - $before_health_insurance_expense - $before_pension_premiums;
 
 // 導入前：社保控除後の金額に応じた源泉徴収額の計算 開始----------------------
-  if($before_pretax_salary >= 58000 && $before_pretax_salary < 400000){
-    $before_dependant0 = 5000;
-    $before_dependant1 = 4000;
-    $before_dependant2 = 3000;
-    $before_dependant3 = 2000;
-    $before_dependant4 = 1000;
-    $before_dependant5 = 500;
-    $before_dependant6 = 300;
-    $before_dependant7 = 100;
+  if($before_pretax_salary >= 0 && $before_pretax_salary < 88000){
+    $before_dependant = [0,0,0,0,0,0,0,0];
+  }elseif($before_pretax_salary >= 88000 && $before_pretax_salary < 400000){
+    $before_dependant = [20000,18000,16000,14000,12000,10000,8000,6000];
   }elseif($before_pretax_salary >= 400000 && $before_pretax_salary < 800000){
-    $before_dependant0 = 25000;
-    $before_dependant1 = 24000;
-    $before_dependant2 = 23000;
-    $before_dependant3 = 22000;
-    $before_dependant4 = 21000;
-    $before_dependant5 = 20000;
-    $before_dependant6 = 19000;
-    $before_dependant7 = 18000;
+    $before_dependant = [40000,38000,36000,34000,32000,30000,28000,26000];
   }else{
-    $before_dependant0 = 45000;
-    $before_dependant1 = 44000;
-    $before_dependant2 = 43000;
-    $before_dependant3 = 42000;
-    $before_dependant4 = 41000;
-    $before_dependant5 = 40000;
-    $before_dependant6 = 39000;
-    $before_dependant7 = 38000;
+    $before_dependant = [50000,49000,48000,47000,46000,45000,440000,430000];
   }
 //導入前：社保控除後の金額に応じた源泉徴収額の計算 終了----------------------
 
 
 //導入前：扶養家族に応じた源泉徴収額の計算 開始----------------------
 if($dependants == 0 ){
-  $before_income_tax =  $before_dependant0;
+  $before_income_tax =  $before_dependant[0];
 }elseif($dependants == 1 ){
-  $before_income_tax =  $before_dependant1;
+  $before_income_tax =  $before_dependant[1];
 }elseif($dependants == 2 ){
-  $before_income_tax =  $before_dependant2;
+  $before_income_tax =  $before_dependant[2];
 }elseif($dependants == 3 ){
-  $before_income_tax =  $before_dependant3;
+  $before_income_tax =  $before_dependant[3];
 }elseif($dependants == 4 ){
-  $before_income_tax =  $before_dependant4;
+  $before_income_tax =  $before_dependant[4];
 }elseif($dependants == 5 ){
-  $before_income_tax =  $before_dependant5;
+  $before_income_tax =  $before_dependant[5];
 }elseif($dependants == 6 ){
-  $before_income_tax =  $before_dependant6;
+  $before_income_tax =  $before_dependant[6];
 }else{
-  $before_income_tax =  $before_dependant7;
+  $before_income_tax =  $before_dependant[7];
 }
 //導入前：扶養家族に応じた源泉徴収額の計算 終了----------------------
 
@@ -886,7 +867,7 @@ if($dependants == 0 ){
 
 
 
-  $message1 = "シミュレーション結果\n\n基本情報\n年齢：$calculation[0]歳\n配偶者：$calculation[1]\n扶養家族：$calculation[2]人\n\n家賃：$calculation[3]円\n勤務地の都道府県：$calculation[4]円\n都道府県毎の住宅利益：$calculation[5]円/1畳\n広さ：$calculation[6]畳\n現物支給額換算：$calculation[7]円";
+  $message1 = "シミュレーション結果\n\n基本情報\n年齢：$calculation[0]歳\n配偶者：$calculation[1]\n扶養家族：$calculation[2]人\n\n家賃：$calculation[3]円\n勤務地の都道府県：$calculation[4]\n都道府県毎の住宅利益：$calculation[5]円/1畳\n広さ：$calculation[6]畳\n現物支給額換算：$calculation[7]円";
 
   $message2 = "導入前\n月額給与：$calculation[8]円\n年間賞与：$calculation[9]円\n年収：$calculation[10]円\n
 健康保険料：$calculation[11]円\n厚生年金保険料：$calculation[12]円\n所得税：$calculation[13]円\n住民税：$calculation[14]円\n社保、税金、家賃控除後の可処分所得：$calculation[15]円";
