@@ -238,7 +238,7 @@ foreach ($events as $event) {
 
   //入力のバリデーション
 
-  if( substr_count($parameter, '、') < 7){
+  if( substr_count($parameters, '、') < 7){
     $error = "入力項目が不足しています。\n案内に沿って、8項目を入力してください。";
     $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
                                       TextMessageBuilder($error));
@@ -247,7 +247,8 @@ foreach ($events as $event) {
       error_log('Failed! '. $response->getHTTPStatus . ' ' .
                                     $response->getRawBody());
       }
-  }elsif( substr_count($parameter, '、') > 7){
+    exit;
+  }elsif( substr_count($parameters, '、') > 7){
     $error = "入力に誤りがあります。\n案内に沿って、8項目を入力してください。";
     $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
                                       TextMessageBuilder($error));
@@ -256,6 +257,7 @@ foreach ($events as $event) {
       error_log('Failed! '. $response->getHTTPStatus . ' ' .
                                     $response->getRawBody());
       }
+    exit;
   }elsif(preg_match("/[^一-龠]/u",$location){
     $error = "入力に誤りがあります。\n";
     $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
@@ -274,8 +276,8 @@ foreach ($events as $event) {
       if(!$response->isSucceeded()){
       error_log('Failed! '. $response->getHTTPStatus . ' ' .
                                     $response->getRawBody());
-      }
-    exit;      
+        }
+    exit;
   }else{
   continue;
   }
