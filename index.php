@@ -224,8 +224,8 @@ foreach ($events as $event) {
   $partner = $parameter[1];         // 配偶者の有無
   $dependants = $parameter[2];      // 扶養家族の数
   $location = $parameter[3];        // 勤務地の都道府県
-  $houserent = $parameter[4];       // お住まいの家賃
-  $space = $parameter[5];           // お住まいの居住空間の広さ
+  $space = $parameter[4];           // お住まいの居住空間の広さ
+  $houserent = $parameter[5];       // お住まいの家賃
   $before_salary = $parameter[6];   // 現在の月額給与
   $before_bonus = $parameter[7];    // 現在の年間賞与
 
