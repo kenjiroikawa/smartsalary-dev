@@ -273,7 +273,7 @@ foreach ($events as $event) {
         }
     exit;*/
   }else{
-  continue;
+  
   }
 
   // 事前計算
