@@ -228,7 +228,7 @@ foreach ($events as $event) {
   // 基本情報：各parametersをそれぞれの変数に代入
   $location = $parameter[0];
   $space = $parameter[1];
-  $before_slary = $parameter[2];
+  $before_salary = $parameter[2];
   $before_bonus = $parameter[3];
   $houserent = $parameter[4];
   $ages = $parameter[5];
@@ -270,7 +270,7 @@ foreach ($events as $event) {
 
 
   // 事前計算
-  $before_yearly_income = $before_slary * 12 + $before_bonus;  // 導入前：年収
+  $before_yearly_income = $before_salary * 12 + $before_bonus;  // 導入前：年収
   $payment_reduce = $houserent * 0.8;                          // 導入後：会社支払家賃
   $rest_payment = $houserent * 0.2;                            // 導入後：本人支払家賃
   $after_salary = $parameter[2] - $payment_reduce;             // 導入後：給与
@@ -306,103 +306,103 @@ foreach ($events as $event) {
   $after_salary_in_kind = $after_salary + $in_kind_as_house;
 
 // 導入前：給与に応じた社会保険料の計算 開始-------------------------------
-  if($before_slary >= 58000 && $before_slary < 63000){
+  if($before_salary >= 58000 && $before_salary < 63000){
     $before_social_insurance = [2871,3326,8052];
-  }elseif($before_slary >= 63000 && $before_slary < 73000){
+  }elseif($before_salary >= 63000 && $before_salary < 73000){
     $before_social_insurance = [3366,3899,8052];
-  }elseif($before_slary >= 73000 && $before_slary < 83000){
+  }elseif($before_salary >= 73000 && $before_salary < 83000){
     $before_social_insurance = [3861,4473,8052];
-  }elseif($before_slary >= 83000 && $before_slary < 93000){
+  }elseif($before_salary >= 83000 && $before_salary < 93000){
     $before_social_insurance = [4356,5046,8052];
-  }elseif($before_slary >= 93000 && $before_slary < 101000){
+  }elseif($before_salary >= 93000 && $before_salary < 101000){
     $before_social_insurance = [4851,5620,8967];
-  }elseif($before_slary >= 101000 && $before_slary < 107000){
+  }elseif($before_salary >= 101000 && $before_salary < 107000){
     $before_social_insurance = [5148,5964,9516];
-  }elseif($before_slary >= 107000 && $before_slary < 114000){
+  }elseif($before_salary >= 107000 && $before_salary < 114000){
     $before_social_insurance = [5445,6308,10065];
-  }elseif($before_slary >= 114000 && $before_slary < 122000){
+  }elseif($before_salary >= 114000 && $before_salary < 122000){
     $before_social_insurance = [5841,6767,10797];
-  }elseif($before_slary >= 122000 && $before_slary < 130000){
+  }elseif($before_salary >= 122000 && $before_salary < 130000){
     $before_social_insurance = [6237,7226,11529];
-  }elseif($before_slary >= 130000 && $before_slary < 138000){
+  }elseif($before_salary >= 130000 && $before_salary < 138000){
     $before_social_insurance = [6633,7684,12261];
-  }elseif($before_slary >= 138000 && $before_slary < 146000){
+  }elseif($before_salary >= 138000 && $before_salary < 146000){
     $before_social_insurance = [7029,8143,12993];
-  }elseif($before_slary >= 146000 && $before_slary < 155000){
+  }elseif($before_salary >= 146000 && $before_salary < 155000){
     $before_social_insurance = [7425,8602,13725];
-  }elseif($before_slary >= 155000 && $before_slary < 165000){
+  }elseif($before_salary >= 155000 && $before_salary < 165000){
     $before_social_insurance = [7920,9176,14640];
-  }elseif($before_slary >= 165000 && $before_slary < 175000){
+  }elseif($before_salary >= 165000 && $before_salary < 175000){
     $before_social_insurance = [8415,9749,15555];
-  }elseif($before_slary >= 175000 && $before_slary < 185000){
+  }elseif($before_salary >= 175000 && $before_salary < 185000){
     $before_social_insurance = [8910,10323,16470];
-  }elseif($before_slary >= 185000 && $before_slary < 195000){
+  }elseif($before_salary >= 185000 && $before_salary < 195000){
     $before_social_insurance = [9405,10896,17385];
-  }elseif($before_slary >= 195000 && $before_slary < 210000){
+  }elseif($before_salary >= 195000 && $before_salary < 210000){
     $before_social_insurance = [9900,11470,18300];
-  }elseif($before_slary >= 210000 && $before_slary < 230000){
+  }elseif($before_salary >= 210000 && $before_salary < 230000){
     $before_social_insurance = [10890,12617,20130];
-  }elseif($before_slary >= 230000 && $before_slary < 250000){
+  }elseif($before_salary >= 230000 && $before_salary < 250000){
     $before_social_insurance = [11880,13764,21960];
-  }elseif($before_slary >= 250000 && $before_slary < 270000){
+  }elseif($before_salary >= 250000 && $before_salary < 270000){
     $before_social_insurance = [12870,14911,23790];
-  }elseif($before_slary >= 270000 && $before_slary < 290000){
+  }elseif($before_salary >= 270000 && $before_salary < 290000){
     $before_social_insurance = [13860,16058,25620];
-  }elseif($before_slary >= 290000 && $before_slary < 310000){
+  }elseif($before_salary >= 290000 && $before_salary < 310000){
     $before_social_insurance = [14850,17205,27450];
-  }elseif($before_slary >= 310000 && $before_slary < 330000){
+  }elseif($before_salary >= 310000 && $before_salary < 330000){
     $before_social_insurance = [15840,18352,29280];
-  }elseif($before_slary >= 330000 && $before_slary < 350000){
+  }elseif($before_salary >= 330000 && $before_salary < 350000){
     $before_social_insurance = [16830,19499,31110];
-  }elseif($before_slary >= 350000 && $before_slary < 370000){
+  }elseif($before_salary >= 350000 && $before_salary < 370000){
     $before_social_insurance = [17820,20646,32940];
-  }elseif($before_slary >= 370000 && $before_slary < 395000){
+  }elseif($before_salary >= 370000 && $before_salary < 395000){
     $before_social_insurance = [18810,21793,34770];
-  }elseif($before_slary >= 395000 && $before_slary < 425000){
+  }elseif($before_salary >= 395000 && $before_salary < 425000){
     $before_social_insurance = [20295,23513,37515];
-  }elseif($before_slary >= 425000 && $before_slary < 455000){
+  }elseif($before_salary >= 425000 && $before_salary < 455000){
     $before_social_insurance = [21780,25324,40260];
-  }elseif($before_slary >= 455000 && $before_slary < 485000){
+  }elseif($before_salary >= 455000 && $before_salary < 485000){
     $before_social_insurance = [23265,26954,43005];
-  }elseif($before_slary >= 485000 && $before_slary < 515000){
+  }elseif($before_salary >= 485000 && $before_salary < 515000){
     $before_social_insurance = [24750,28675,45750];
-  }elseif($before_slary >= 515000 && $before_slary < 545000){
+  }elseif($before_salary >= 515000 && $before_salary < 545000){
     $before_social_insurance = [26235,30395,48495];
-  }elseif($before_slary >= 545000 && $before_slary < 575000){
+  }elseif($before_salary >= 545000 && $before_salary < 575000){
     $before_social_insurance = [27720,32116,51240];
-  }elseif($before_slary >= 575000 && $before_slary < 605000){
+  }elseif($before_salary >= 575000 && $before_salary < 605000){
     $before_social_insurance = [29205,33836,53985];
-  }elseif($before_slary >= 605000 && $before_slary < 635000){
+  }elseif($before_salary >= 605000 && $before_salary < 635000){
     $before_social_insurance = [30690,35557,56730];
-  }elseif($before_slary >= 635000 && $before_slary < 665000){
+  }elseif($before_salary >= 635000 && $before_salary < 665000){
     $before_social_insurance = [32175,37277,56730];
-  }elseif($before_slary >= 665000 && $before_slary < 695000){
+  }elseif($before_salary >= 665000 && $before_salary < 695000){
     $before_social_insurance = [33660,38998,56730];
-  }elseif($before_slary >= 695000 && $before_slary < 730000){
+  }elseif($before_salary >= 695000 && $before_salary < 730000){
     $before_social_insurance = [35145,40718,56730];
-  }elseif($before_slary >= 730000 && $before_slary < 770000){
+  }elseif($before_salary >= 730000 && $before_salary < 770000){
     $before_social_insurance = [37125,43012,56730];
-  }elseif($before_slary >= 770000 && $before_slary < 810000){
+  }elseif($before_salary >= 770000 && $before_salary < 810000){
     $before_social_insurance = [39105,45306,56730];
-  }elseif($before_slary >= 810000 && $before_slary < 855000){
+  }elseif($before_salary >= 810000 && $before_salary < 855000){
     $before_social_insurance = [41085,47600,56730];
-  }elseif($before_slary >= 855000 && $before_slary < 905000){
+  }elseif($before_salary >= 855000 && $before_salary < 905000){
     $before_social_insurance = [43560,50468,56730];
-  }elseif($before_slary >= 905000 && $before_slary < 955000){
+  }elseif($before_salary >= 905000 && $before_salary < 955000){
     $before_social_insurance = [46035,53335,56730];
-  }elseif($before_slary >= 955000 && $before_slary < 1005000){
+  }elseif($before_salary >= 955000 && $before_salary < 1005000){
     $before_social_insurance = [48510,56203,56730];
-  }elseif($before_slary >= 1005000 && $before_slary < 1055000){
+  }elseif($before_salary >= 1005000 && $before_salary < 1055000){
     $before_social_insurance = [50985,59070,56730];
-  }elseif($before_slary >= 1055000 && $before_slary < 1115000){
+  }elseif($before_salary >= 1055000 && $before_salary < 1115000){
     $before_social_insurance = [53955,62511,56730];
-  }elseif($before_slary >= 1115000 && $before_slary < 1175000){
+  }elseif($before_salary >= 1115000 && $before_salary < 1175000){
     $before_social_insurance = [56925,65952,56730];
-  }elseif($before_slary >= 1115000 && $before_slary < 1235000){
+  }elseif($before_salary >= 1115000 && $before_salary < 1235000){
     $before_social_insurance = [59895,69393,56730];
-  }elseif($before_slary >= 1235000 && $before_slary < 1295000){
+  }elseif($before_salary >= 1235000 && $before_salary < 1295000){
     $before_social_insurance = [62865,72834,56730];
-  }elseif($before_slary >= 1295000 && $before_slary < 1355000){
+  }elseif($before_salary >= 1295000 && $before_salary < 1355000){
     $before_social_insurance = [65835,76275,56730];
   }else{
     $before_social_insurance = [68805,79716,56730];
@@ -424,7 +424,7 @@ foreach ($events as $event) {
   $before_social_insurance_total = ($before_health_insurance_expense + $before_pension_premiums) * 12;
 
 // 導入前：社保控除後の金額
-  $before_pretax_salary = $before_slary - $before_health_insurance_expense - $before_pension_premiums;
+  $before_pretax_salary = $before_salary - $before_health_insurance_expense - $before_pension_premiums;
 
 // 導入前：社保控除後の金額に応じた源泉徴収額の計算 開始----------------------
   if($before_pretax_salary >= 0 && $before_pretax_salary < 88000){
@@ -583,7 +583,7 @@ if($dependants == 0 ){
 
   // 月額住民税の計算
   $before_inhabitant_tax = floor($before_inhabitant_tax_yearly / 120);
-  
+
 // 導入前：住民税の計算 終了-----------------------------------------
 
 // 導入前：社保、税金、家賃控除後の可処分所得の計算
@@ -784,10 +784,10 @@ if($dependants == 0 ){
   $calculation[] = $houserent;                              // [3] 家賃
   $calculation[] = $location;                               // [4] 勤務地の都道府県
   $calculation[] = $housebenefit;                           // [5] 都道府県毎の住宅利益
-  $calculation[] = $space;                           // [6] 広さ
+  $calculation[] = $space;                                  // [6] 広さ
   $calculation[] = $in_kind_as_house;                       // [7] 現物支給額
 
-  $calculation[] = $before_slary;                           // [8] 導入前：月額給与
+  $calculation[] = $before_salary;                           // [8] 導入前：月額給与
   $calculation[] = $before_bonus;                           // [9] 導入前：年間賞与
   $calculation[] = $before_yearly_income;                   // [10] 導入前：年収
   $calculation[] = $before_health_insurance_expense;        // [11] 導入前：健康保険料
@@ -811,7 +811,7 @@ if($dependants == 0 ){
 
   $calculation[] = $before_salary_deduction;                // [26] 給与所得控除
   $calculation[] = $before_income_deduction;                // [27] 所得控除
-  $calculation[] = $before_inhabitant_tax_yearly;           // [28] 住民税年額
+  $calculation[] = $before_inhabitant_tax_yearly / 12;      // [28] 住民税年額
   $calculation[] = $before_inhabitant_tax;                  // [29] 住民税月額
 
   $message1 = "シミュレーション結果\n\n基本情報\n年齢：$calculation[0]歳\n配偶者：$calculation[1]\n扶養家族：$calculation[2]人\n\n家賃：$calculation[3]円\n勤務地の都道府県：$calculation[4]\n都道府県毎の住宅利益：$calculation[5]円/1畳\n広さ：$calculation[6]畳\n現物支給額換算：$calculation[7]円";
@@ -821,7 +821,7 @@ if($dependants == 0 ){
 
   $message3 = "導入後\n\n会社負担家賃（家賃×0.8）：$calculation[16]円\n本人負担家賃（家賃×0.2）：$calculation[17]円\n月額給与：$calculation[18]円\n年間賞与：$calculation[9]円\n年収：$calculation[19] 円\n健康保険料：$calculation[20]円\n厚生年金保険料：$calculation[21]円\n所得税：$calculation[22]円\n住民税：$calculation[23]円\n社保、税金、家賃控除後の可処分所得：$calculation[24]円\n\nスマートサラリー導入効果：$calculation[25]円\n";
 
-  $message4 = "導入前\n\n年収：$calculation[10]\n給与所得控除：$calculation[26]円\n所得控除：$calculation[27]円\n住民税年額：$calculation[28]円\n住民税月額：$calculation[29]円";
+  $message4 = "導入前\n\n年収：$calculation[10]円\n給与所得控除：$calculation[26]円\n所得控除：$calculation[27]円\n住民税年額：$calculation[28]円\n住民税月額：$calculation[29]円";
 
   // メッセージをユーザーに返信
 $bot->replyText($event->getReplyToken(), $message1, $message2, $message3, $message4);
