@@ -235,8 +235,50 @@ foreach ($events as $event) {
   $partner = $parameter[6];
   $dependants = $parameter[7];
 
+
   //入力のバリデーション
 
+  if( substr_count($parameter, '、') < 7){
+    $error = "入力項目が不足しています。\n案内に沿って、8項目を入力してください。";
+    $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
+                                      TextMessageBuilder($error));
+
+      if(!$response->isSucceeded()){
+      error_log('Failed! '. $response->getHTTPStatus . ' ' .
+                                    $response->getRawBody());
+      }
+  }elsif( substr_count($parameter, '、') > 7){
+    $error = "入力に誤りがあります。\n案内に沿って、8項目を入力してください。";
+    $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
+                                      TextMessageBuilder($error));
+
+      if(!$response->isSucceeded()){
+      error_log('Failed! '. $response->getHTTPStatus . ' ' .
+                                    $response->getRawBody());
+      }
+  }elsif(preg_match("/[^一-龠]/u",$location){
+    $error = "入力に誤りがあります。\n";
+    $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
+                                      TextMessageBuilder($error));
+
+      if(!$response->isSucceeded()){
+      error_log('Failed! '. $response->getHTTPStatus . ' ' .
+                                    $response->getRawBody());
+        }
+    exit;
+  }elsif(preg_match("/^[0-9]+$/", $space)){
+    $error = "広さの入力に誤りがあります。半角数値のみで入力してください。\n";
+    $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
+                                      TextMessageBuilder($error));
+
+      if(!$response->isSucceeded()){
+      error_log('Failed! '. $response->getHTTPStatus . ' ' .
+                                    $response->getRawBody());
+      }
+    exit;      
+  }else{
+  continue;
+  }
 
   // 事前計算
   $before_yearly_income = $before_slary * 12 + $before_bonus;  // 導入前：年収
