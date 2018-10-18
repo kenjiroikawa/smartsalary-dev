@@ -1324,16 +1324,15 @@ if($dependants == 0 ){
   $calculation[] = $effect_recalculation = $delta_income_tax + $delta_social_insurance + $delta_inhabitant_tax; // [33]可処分所得増加分の検算
 
 // ユーザーにシミュレーション結果等を返信
-  $message0 = "シミュレーション結果\n\nスマートサラリーを導入すると最大で毎月$calculation[25]円多く手元に残るようになります。\n\n内訳\n1ヶ月後 $calculation[30]円UP\n4ヶ月後 $calculation[31]円UP\n翌年度以降 最大$calculation[32]円UP\n\n※住民税分は導入時期によって変動します。\n詳しくはお問い合わせください。";
+  $message0 = "【シミュレーション結果】\n\nスマートサラリーを導入すると最大で毎月$calculation[25]円多く手元に残るようになります。\n\n内訳\n1ヶ月後 $calculation[30]円UP\n4ヶ月後 $calculation[31]円UP\n翌年度以降 最大$calculation[32]円UP\n\n※住民税分は導入時期によって変動します。\n詳しくはお問い合わせください。";
 
-  $message1 = "基本情報\n\n年齢：$calculation[0]歳\n配偶者：$calculation[1]\n扶養家族：$calculation[2]人\n勤務地の都道府県：$calculation[3]\n\n家賃：$calculation[4]円\n自宅の居住空間の広さ：$calculation[5]畳\n$calculation[4]の住宅利益：1畳あたり$calculation[6]円\n現物支給額換算：$calculation[7]円";
+  $message1 = "【基本情報】\n\n年齢：$calculation[0]歳\n配偶者：$calculation[1]\n扶養家族：$calculation[2]人\n勤務地の都道府県：$calculation[3]\n\n家賃：$calculation[4]円\n自宅の居住空間の広さ：$calculation[5]畳\n$calculation[4]の住宅利益：1畳あたり$calculation[6]円\n現物支給額換算：$calculation[7]円";
 
-  $message2 = "導入前\n\n月額給与：$calculation[8]円\n年間賞与：$calculation[9]円\n年収：$calculation[10]円\n
-健康保険料：$calculation[11]円\n厚生年金保険料：$calculation[12]円\n所得税：$calculation[13]円\n住民税：$calculation[14]円\n社保、税金、家賃控除後の可処分所得：$calculation[15]円";
+  $message2 = "【スマートサラリー導入前】\n\n月額給与：$calculation[8]円\n年間賞与：$calculation[9]円\n年収：$calculation[10]円\n\n健康保険料：$calculation[11]円\n厚生年金保険料：$calculation[12]円\n所得税：$calculation[13]円\n住民税：$calculation[14]円\n社保、税金、家賃控除後の可処分所得：$calculation[15]円";
 
-  $message3 = "導入後\n\n会社負担家賃（家賃×0.8）：$calculation[16]円\n本人負担家賃（家賃×0.2）：$calculation[17]円\n月額給与：$calculation[18]円\n年間賞与：$calculation[9]円\n年収：$calculation[19] 円\n健康保険料：$calculation[20]円\n厚生年金保険料：$calculation[21]円\n所得税：$calculation[22]円\n住民税：$calculation[23]円\n社保、税金、家賃控除後の可処分所得：$calculation[24]円\n\nスマートサラリー導入効果：$calculation[25]円\n";
+  $message3 = "【スマートサラリー導入後】\n\n会社負担家賃（家賃×0.8）：$calculation[16]円\n本人負担家賃（家賃×0.2）：$calculation[17]円\n\n月額給与：$calculation[18]円\n年間賞与：$calculation[9]円\n年収：$calculation[19] 円\n\n健康保険料：$calculation[20]円\n厚生年金保険料：$calculation[21]円\n所得税：$calculation[22]円\n住民税：$calculation[23]円\n社保、税金、家賃控除後の可処分所得：$calculation[24]円\n\nスマートサラリー導入効果：$calculation[25]円\n";
 
-  $message4 = "導入前\n\n年収：$calculation[10]円\n給与所得控除：$calculation[26]円\n所得控除：$calculation[27]円\n住民税年額：$calculation[28]円\n住民税月額：$calculation[29]円\n\n所得税差分：$calculation[30]円\n社会保険料差分：$calculation[31]円\n住民税差分：$calculation[32]円\n可処分所得増加分の検算：$calculation[33]円";
+  $message4 = "【開発確認用パラメータ】\n\n年収：$calculation[10]円\n給与所得控除：$calculation[26]円\n所得控除：$calculation[27]円\n住民税年額：$calculation[28]円\n住民税月額：$calculation[29]円\n\n所得税差分：$calculation[30]円\n社会保険料差分：$calculation[31]円\n住民税差分：$calculation[32]円\n可処分所得増加分の検算：$calculation[33]円";
 
   // メッセージをユーザーに返信
 $bot->replyText($event->getReplyToken(), $message0, $message1, $message2, $message3, $message4);
