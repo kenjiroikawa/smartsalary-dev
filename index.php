@@ -885,14 +885,13 @@ if($dependants == 0 ){
   $calculation[] = $ages;                                   // [0] 年齢
   $calculation[] = $partner;                                // [1] 配偶者
   $calculation[] = $dependants;                             // [2] 扶養家族
-
-  $calculation[] = $houserent;                              // [3] 家賃
-  $calculation[] = $location;                               // [4] 勤務地の都道府県
-  $calculation[] = $housebenefit;                           // [5] 都道府県毎の住宅利益
-  $calculation[] = $space;                                  // [6] 広さ
+  $calculation[] = $location;                               // [3] 勤務地の都道府県
+  $calculation[] = $houserent;                              // [4] 家賃
+  $calculation[] = $space;                                  // [5] 広さ
+  $calculation[] = $housebenefit;                           // [6] 都道府県毎の住宅利益
   $calculation[] = $in_kind_as_house;                       // [7] 現物支給額
 
-  $calculation[] = $before_salary;                           // [8] 導入前：月額給与
+  $calculation[] = $before_salary;                          // [8] 導入前：月額給与
   $calculation[] = $before_bonus;                           // [9] 導入前：年間賞与
   $calculation[] = $before_yearly_income;                   // [10] 導入前：年収
   $calculation[] = $before_health_insurance_expense;        // [11] 導入前：健康保険料
@@ -900,7 +899,6 @@ if($dependants == 0 ){
   $calculation[] = $before_income_tax;                      // [13] 導入前：所得税
   $calculation[] = $before_inhabitant_tax;                  // [14] 導入前：住民税
   $calculation[] = $before_disposable_income;               // [15] 導入前：社保、税金、家賃控除後の可処分所得
-
 
   $calculation[] = $payment_reduce;                         // [16] 導入後：会社負担家賃（家賃×0.8）
   $calculation[] = $rest_payment;                           // [17] 導入後：本人負担家賃（家賃×0.2）
@@ -924,15 +922,10 @@ if($dependants == 0 ){
   $calculation[] = $delta_inhabitant_tax;                   // [32]住民税差分
   $calculation[] = $effect_recalculation = $delta_income_tax + $delta_social_insurance + $delta_inhabitant_tax; // [33]可処分所得増加分の検算
 
-
-  // 導入前、導入後の可処分所得の増加分の計算
-  $effect = $after_disposable_income - $before_disposable_income;
-
-
-
+// ユーザーにシミュレーション結果等を返信
   $message0 = "シミュレーション結果\n\nスマートサラリーを導入すると最大で毎月$calculation[25]円多く手元に残るようになります。\n\n内訳\n1ヶ月後 $calculation[30]円UP\n4ヶ月後 $calculation[31]円UP\n翌年度以降 最大$calculation[32]円UP\n\n※住民税分は導入時期によって変動します。\n詳しくはお問い合わせください。";
 
-  $message1 = "基本情報\n\n年齢：$calculation[0]歳\n配偶者：$calculation[1]\n扶養家族：$calculation[2]人\n\n家賃：$calculation[3]円\n勤務地の都道府県：$calculation[4]\n$calculation[4]の住宅利益：1畳あたり$calculation[5]円\n自宅の居住空間の広さ：$calculation[6]畳\n現物支給額換算：$calculation[7]円";
+  $message1 = "基本情報\n\n年齢：$calculation[0]歳\n配偶者：$calculation[1]\n扶養家族：$calculation[2]人\n勤務地の都道府県：$calculation[3]\n\n家賃：$calculation[4]円\n自宅の居住空間の広さ：$calculation[5]畳\n$calculation[4]の住宅利益：1畳あたり$calculation[6]円\n現物支給額換算：$calculation[7]円";
 
   $message2 = "導入前\n\n月額給与：$calculation[8]円\n年間賞与：$calculation[9]円\n年収：$calculation[10]円\n
 健康保険料：$calculation[11]円\n厚生年金保険料：$calculation[12]円\n所得税：$calculation[13]円\n住民税：$calculation[14]円\n社保、税金、家賃控除後の可処分所得：$calculation[15]円";
