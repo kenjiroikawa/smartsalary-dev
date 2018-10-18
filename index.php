@@ -814,7 +814,9 @@ if($dependants == 0 ){
   $calculation[] = $before_inhabitant_tax_yearly / 12;      // [28] 住民税年額
   $calculation[] = $before_inhabitant_tax;                  // [29] 住民税月額
 
-  $message1 = "シミュレーション結果\n\n基本情報\n年齢：$calculation[0]歳\n配偶者：$calculation[1]\n扶養家族：$calculation[2]人\n\n家賃：$calculation[3]円\n勤務地の都道府県：$calculation[4]\n都道府県毎の住宅利益：$calculation[5]円/1畳\n広さ：$calculation[6]畳\n現物支給額換算：$calculation[7]円";
+  $message0 = "シミュレーション結果\n\nスマートサラリーを導入すると最大で毎月$calculation[15]円多く残ります。\n\n1ヶ月後 所得税分　　円アップ\n4ヶ月後 社会保険料分　円アップ\n翌年度 住民税分　円アップ\n\n※住民税分は導入時期によって変動します。詳しくはお問い合わせください。;";
+
+  $message1 = "基本情報\n\n年齢：$calculation[0]歳\n配偶者：$calculation[1]\n扶養家族：$calculation[2]人\n\n家賃：$calculation[3]円\n勤務地の都道府県：$calculation[4]\n都道府県毎の住宅利益：$calculation[5]円/1畳\n広さ：$calculation[6]畳\n現物支給額換算：$calculation[7]円";
 
   $message2 = "導入前\n\n月額給与：$calculation[8]円\n年間賞与：$calculation[9]円\n年収：$calculation[10]円\n
 健康保険料：$calculation[11]円\n厚生年金保険料：$calculation[12]円\n所得税：$calculation[13]円\n住民税：$calculation[14]円\n社保、税金、家賃控除後の可処分所得：$calculation[15]円";
@@ -824,46 +826,8 @@ if($dependants == 0 ){
   $message4 = "導入前\n\n年収：$calculation[10]円\n給与所得控除：$calculation[26]円\n所得控除：$calculation[27]円\n住民税年額：$calculation[28]円\n住民税月額：$calculation[29]円";
 
   // メッセージをユーザーに返信
-$bot->replyText($event->getReplyToken(), $message1, $message2, $message3, $message4);
-
-/*
-  $response = $bot->replyMessage($event->getReplyToken(), new \LINE\LINEBot\MessageBuilder\
-                                    TextMessageBuilder($message1));
-
-  if (!$response->isSucceeded()){
-    error_log('Failed!'. $response->getHTTPStatus .' ' .
-                            $response->getRawBody());
-  }
-  $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
-                                    TextMessageBuilder($message1));
-
-    if(!$response->isSucceeded()){
-    error_log('Failed! '. $response->getHTTPStatus . ' ' .
-                                  $response->getRawBody());
-    }
-
-
-
-  // メッセージ2をユーザーID宛にプッシュ
-  $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
-                                    TextMessageBuilder($message2));
-
-    if(!$response->isSucceeded()){
-    error_log('Failed! '. $response->getHTTPStatus . ' ' .
-                                  $response->getRawBody());
-    }
-
-  // メッセージ3をユーザーID宛にプッシュ
-  $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
-                                    TextMessageBuilder($message3));
-
-    if(!$response->isSucceeded()){
-    error_log('Failed! '. $response->getHTTPStatus . ' ' .
-                                  $response->getRawBody());
-    }
-*/
+$bot->replyText($event->getReplyToken(), $message0, $message1, $message2, $message3, $message4);
 
 }
-
 
 ?>
