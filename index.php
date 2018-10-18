@@ -246,7 +246,7 @@ foreach ($events as $event) {
     $error = "9項目以上が入力されています。\n案内に沿って、8項目を入力してください。";
     $bot->replyText($event->getReplyToken(), $error);
     exit;
-  }elseif(preg_match("/[^一-龠]/u",$location) = 0 ){
+  }elseif( preg_match("/[^一-龠]/u",$location) == 0 ){
     $error = "都道府県の入力に誤りがあります。";
     $bot->replyText($event->getReplyToken(), $error);
     exit;
