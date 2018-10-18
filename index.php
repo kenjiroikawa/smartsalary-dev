@@ -268,7 +268,7 @@ foreach ($events as $event) {
 
 
 // 都道府県による住宅利益の分類 開始---------------------------------------
-  if($location == '東京都'){
+  if($location == '東京都' or $location == '東京'){
   $housebenefit = 2590;
   }elseif($location == '神奈川県'){
   $housebenefit = 2070;
