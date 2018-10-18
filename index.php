@@ -932,7 +932,7 @@ if($dependants == 0 ){
 
   $message0 = "シミュレーション結果\n\nスマートサラリーを導入すると最大で毎月$calculation[25]円多く手元に残るようになります。\n\n内訳\n1ヶ月後 $calculation[30]円UP\n4ヶ月後 $calculation[31]円UP\n翌年度以降 最大$calculation[32]円UP\n\n※住民税分は導入時期によって変動します。\n詳しくはお問い合わせください。";
 
-  $message1 = "基本情報\n\n年齢：$calculation[0]歳\n配偶者：$calculation[1]\n扶養家族：$calculation[2]人\n\n家賃：$calculation[3]円\n勤務地の都道府県：$calculation[4]\n都道府県毎の住宅利益：$calculation[5]円/1畳\n広さ：$calculation[6]畳\n現物支給額換算：$calculation[7]円";
+  $message1 = "基本情報\n\n年齢：$calculation[0]歳\n配偶者：$calculation[1]\n扶養家族：$calculation[2]人\n\n家賃：$calculation[3]円\n勤務地の都道府県：$calculation[4]\n$calculation[4]の住宅利益：1畳あたり$calculation[5]円\n自宅の居住空間の広さ：$calculation[6]畳\n現物支給額換算：$calculation[7]円";
 
   $message2 = "導入前\n\n月額給与：$calculation[8]円\n年間賞与：$calculation[9]円\n年収：$calculation[10]円\n
 健康保険料：$calculation[11]円\n厚生年金保険料：$calculation[12]円\n所得税：$calculation[13]円\n住民税：$calculation[14]円\n社保、税金、家賃控除後の可処分所得：$calculation[15]円";
