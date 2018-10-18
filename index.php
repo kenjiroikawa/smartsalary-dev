@@ -776,7 +776,7 @@ if($dependants == 0 ){
   $delta_income_tax = $before_income_tax - $after_income_tax;
 
   // 社会保険料比較
-  $delta_social_insurance = $before_social_insurance - $after_social_insurance;
+  $delta_social_insurance = $before_social_insurance_total - $after_social_insurance_total;
 
   // 住民税比較
   $delta_inhabitant_tax = $before_inhabitant_tax - $after_inhabitant_tax;
