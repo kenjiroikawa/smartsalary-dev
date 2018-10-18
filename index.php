@@ -248,7 +248,7 @@ foreach ($events as $event) {
                                     $response->getRawBody());
       }
     exit;
-  }elsif( substr_count($parameters, '、') > 7){
+/*  }elsif( substr_count($parameters, '、') > 7){
     $error = "入力に誤りがあります。\n案内に沿って、8項目を入力してください。";
     $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
                                       TextMessageBuilder($error));
@@ -277,7 +277,7 @@ foreach ($events as $event) {
       error_log('Failed! '. $response->getHTTPStatus . ' ' .
                                     $response->getRawBody());
         }
-    exit;
+    exit;*/
   }else{
   continue;
   }
