@@ -771,9 +771,19 @@ if($dependants == 0 ){
 // 導入後：社保、税金、家賃控除後の可処分所得の計算
   $after_disposable_income = $after_salary - $after_health_insurance_expense - $after_pension_premiums - $after_income_tax - $after_inhabitant_tax - $rest_payment;
 
-// 導入前、導入後の可処分所得の増加分の計算
-  $effect = $after_disposable_income - $before_disposable_income;
+// 導入前後の比較
+  // 所得税比較
+  $delta_income_tax = $before_income_tax - $after_income_tax;
 
+  // 社会保険料比較
+  $delta_social_insurance = $before_social_insurance - $after_social_insurance;
+
+  // 住民税比較
+  $delta_inhabitant_tax = $before_inhabitant_tax - $after_inhabitant_tax;
+
+  // 導入前、導入後の可処分所得の増加分の計算
+  $effect = $after_disposable_income - $before_disposable_income;
+  $effect_recalculation = $delta_income_tax + $delta_social_insurance + $delta_inhabitant_tax;
 
 // LINE上に表示する数値を配列に代入
   // 基本情報、事前計算関連
@@ -814,7 +824,18 @@ if($dependants == 0 ){
   $calculation[] = $before_inhabitant_tax_yearly / 12;      // [28] 住民税年額
   $calculation[] = $before_inhabitant_tax;                  // [29] 住民税月額
 
-  $message0 = "シミュレーション結果\n\nスマートサラリーを導入すると最大で毎月$calculation[15]円多く残ります。\n\n1ヶ月後 所得税分　　円アップ\n4ヶ月後 社会保険料分　円アップ\n翌年度 住民税分　円アップ\n\n※住民税分は導入時期によって変動します。詳しくはお問い合わせください。;";
+  $calculation[] = $delta_income_tax;                       // [30]所得税差分
+  $calculation[] = $delta_social_insurance;                 // [31]社会保険料差分
+  $calculation[] = $delta_inhabitant_tax;                   // [32]住民税差分
+  $calculation[] = $effect_recalculation = $delta_income_tax + $delta_social_insurance + $delta_inhabitant_tax; // [33]可処分所得増加分の検算
+
+
+  // 導入前、導入後の可処分所得の増加分の計算
+  $effect = $after_disposable_income - $before_disposable_income;
+
+
+
+  $message0 = "シミュレーション結果\n\nスマートサラリーを導入すると最大で毎月$calculation[25]円多く手元に残るようになります。\n\n内訳\n1ヶ月後 $calculation[30]円UP\n4ヶ月後 $calculation[31]円UP\n翌年度以降 最大$calculation[32]円UP\n\n※住民税分は導入時期によって変動します。\n詳しくはお問い合わせください。";
 
   $message1 = "基本情報\n\n年齢：$calculation[0]歳\n配偶者：$calculation[1]\n扶養家族：$calculation[2]人\n\n家賃：$calculation[3]円\n勤務地の都道府県：$calculation[4]\n都道府県毎の住宅利益：$calculation[5]円/1畳\n広さ：$calculation[6]畳\n現物支給額換算：$calculation[7]円";
 
@@ -823,7 +844,7 @@ if($dependants == 0 ){
 
   $message3 = "導入後\n\n会社負担家賃（家賃×0.8）：$calculation[16]円\n本人負担家賃（家賃×0.2）：$calculation[17]円\n月額給与：$calculation[18]円\n年間賞与：$calculation[9]円\n年収：$calculation[19] 円\n健康保険料：$calculation[20]円\n厚生年金保険料：$calculation[21]円\n所得税：$calculation[22]円\n住民税：$calculation[23]円\n社保、税金、家賃控除後の可処分所得：$calculation[24]円\n\nスマートサラリー導入効果：$calculation[25]円\n";
 
-  $message4 = "導入前\n\n年収：$calculation[10]円\n給与所得控除：$calculation[26]円\n所得控除：$calculation[27]円\n住民税年額：$calculation[28]円\n住民税月額：$calculation[29]円";
+  $message4 = "導入前\n\n年収：$calculation[10]円\n給与所得控除：$calculation[26]円\n所得控除：$calculation[27]円\n住民税年額：$calculation[28]円\n住民税月額：$calculation[29]円\n\n所得税差分：$calculation[30]円\n社会保険料差分：$calculation[31]円\n住民税差分：$calculation[32]円\n可処分所得増加分の検算：$calculation[33]円";
 
   // メッセージをユーザーに返信
 $bot->replyText($event->getReplyToken(), $message0, $message1, $message2, $message3, $message4);
