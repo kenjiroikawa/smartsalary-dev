@@ -303,7 +303,6 @@ foreach ($events as $event) {
   }else{
     $exception = "申し訳ございません。シミュレーション対象外の地域です。\n対象の地域は、東京都・神奈川県・埼玉県・千葉県・茨城県・群馬県・栃木県となります。";
     $bot->replyText($event->getReplyToken(), $exception);
-      }
   exit;
   }
 // 都道府県による住宅利益の分類 終了---------------------------------------
@@ -539,7 +538,6 @@ foreach ($events as $event) {
     $before_dependant5 = 500;
     $before_dependant6 = 300;
     $before_dependant7 = 100;
-
   }elseif($before_pretax_salary >= 400000 && $before_pretax_salary < 800000){
     $before_dependant0 = 25000;
     $before_dependant1 = 24000;
