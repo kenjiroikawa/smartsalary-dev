@@ -561,15 +561,15 @@ if($dependants == 0 ){
   // 給与所得控除の計算
   if($before_salary < 1625000){
     $before_salary_deduction = 650000;
-  }elseif($before_salary >= 1625000 && $before_salary =< 1800000){
+  }elseif($before_salary >= 1625000 && $before_salary <= 1800000){
     $before_salary_deduction = $before_salary * 0.4;
-  }elseif($before_salary > 1800000 && $before_salary =< 3600000){
+  }elseif($before_salary > 1800000 && $before_salary <= 3600000){
     $before_salary_deduction = $before_salary * 0.3 + 180000;
-  }elseif($before_salary > 3600000 && $before_salary =< 6600000){
+  }elseif($before_salary > 3600000 && $before_salary <= 6600000){
     $before_salary_deduction = $before_salary * 0.2 + 540000;
-  }elseif($before_salary > 6600000 && $before_salary =< 10000000){
+  }elseif($before_salary > 6600000 && $before_salary <= 10000000){
     $before_salary_deduction = $before_salary * 0.1 + 1200000;
-  }elseif($before_salary > 1625000 && $before_salary =< 1800000){
+  }elseif($before_salary > 1625000 && $before_salary <= 1800000){
     $before_salary_deduction = $before_salary * 0.4;
   }else{
     $before_salary_deduction = 2200000;
