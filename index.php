@@ -712,61 +712,162 @@ $before_disposable_income = $before_salary - $before_health_insurance_expense - 
   $after_pretax_salary = $after_salary - $after_health_insurance_expense - $after_pension_premiums;
 
 // 導入後：社保控除後の金額に応じた源泉徴収額の計算 開始----------------------
-  if($after_pretax_salary >= 58000 && $after_pretax_salary < 400000){
-    $after_dependant0 = 5000;
-    $after_dependant1 = 4000;
-    $after_dependant2 = 3000;
-    $after_dependant3 = 2000;
-    $after_dependant4 = 1000;
-    $after_dependant5 = 500;
-    $after_dependant6 = 300;
-    $after_dependant7 = 100;
-
-  }elseif($after_pretax_salary >= 400000 && $after_pretax_salary < 800000){
-    $after_dependant0 = 25000;
-    $after_dependant1 = 24000;
-    $after_dependant2 = 23000;
-    $after_dependant3 = 22000;
-    $after_dependant4 = 21000;
-    $after_dependant5 = 20000;
-    $after_dependant6 = 19000;
-    $after_dependant7 = 18000;
+  if($after_pretax_salary >= 0 && $after_pretax_salary < 88000){
+    $after_dependant = [0,0,0,0,0,0,0,0];
+  }elseif($after_pretax_salary >= 88000 && $after_pretax_salary < 89000){
+    $after_dependant = [130,0,0,0,0,0,0,0];
+  }elseif($after_pretax_salary >= 89000 && $after_pretax_salary < 90000){
+    $after_dependant = [180,0,0,0,0,0,0,0];
+  }elseif($after_pretax_salary >= 90000 && $after_pretax_salary < 91000){
+    $after_dependant = [230,0,0,0,0,0,0,0];
+  }elseif($after_pretax_salary >= 91000 && $after_pretax_salary < 92000){
+    $after_dependant = [290,0,0,0,0,0,0,0];
+  }elseif($after_pretax_salary >= 92000 && $after_pretax_salary < 93000){
+    $after_dependant = [340,0,0,0,0,0,0,0];
+  }elseif($after_pretax_salary >= 93000 && $after_pretax_salary < 94000){
+    $after_dependant = [390,0,0,0,0,0,0,0];
+  }elseif($after_pretax_salary >= 94000 && $after_pretax_salary < 95000){
+    $after_dependant = [440,0,0,0,0,0,0,0];
+  }elseif($after_pretax_salary >= 95000 && $after_pretax_salary < 96000){
+    $after_dependant = [490,0,0,0,0,0,0,0];
+  }elseif($after_pretax_salary >= 96000 && $after_pretax_salary < 97000){
+    $after_dependant = [540,0,0,0,0,0,0,0];
+  }elseif($after_pretax_salary >= 97000 && $after_pretax_salary < 98000){
+    $after_dependant = [590,0,0,0,0,0,0,0];
+  }elseif($after_pretax_salary >= 98000 && $after_pretax_salary < 99000){
+    $after_dependant = [640,0,0,0,0,0,0,0];
+  }elseif($after_pretax_salary >= 99000 && $after_pretax_salary < 101000){
+    $after_dependant = [720,0,0,0,0,0,0,0];
+  }elseif($after_pretax_salary >= 101000 && $after_pretax_salary < 103000){
+    $after_dependant = [830,0,0,0,0,0,0,0];
+  }elseif($after_pretax_salary >= 103000 && $after_pretax_salary < 105000){
+    $after_dependant = [930,0,0,0,0,0,0,0];
+  }elseif($after_pretax_salary >= 105000 && $after_pretax_salary < 107000){
+    $after_dependant = [1030,0,0,0,0,0,0,0];
+  }elseif($after_pretax_salary >= 107000 && $after_pretax_salary < 109000){
+    $after_dependant = [1130,0,0,0,0,0,0,0];
+  }elseif($after_pretax_salary >= 109000 && $after_pretax_salary < 111000){
+    $after_dependant = [1240,0,0,0,0,0,0,0];
+  }elseif($after_pretax_salary >= 111000 && $after_pretax_salary < 113000){
+    $after_dependant = [1340,0,0,0,0,0,0,0];
+  }elseif($after_pretax_salary >= 113000 && $after_pretax_salary < 115000){
+    $after_dependant = [1440,0,0,0,0,0,0,0];
+  }elseif($after_pretax_salary >= 115000 && $after_pretax_salary < 117000){
+    $after_dependant = [1540,0,0,0,0,0,0,0];
+  }elseif($after_pretax_salary >= 117000 && $after_pretax_salary < 119000){
+    $after_dependant = [1640,0,0,0,0,0,0,0];
+  }elseif($after_pretax_salary >= 119000 && $after_pretax_salary < 121000){
+    $after_dependant = [1750,120,0,0,0,0,0,0];
+  }elseif($after_pretax_salary >= 121000 && $after_pretax_salary < 123000){
+    $after_dependant = [1850,220,0,0,0,0,0,0];
+  }elseif($after_pretax_salary >= 123000 && $after_pretax_salary < 125000){
+    $after_dependant = [1950,330,0,0,0,0,0,0];
+  }elseif($after_pretax_salary >= 125000 && $after_pretax_salary < 127000){
+    $after_dependant = [2050,430,0,0,0,0,0,0];
+  }elseif($after_pretax_salary >= 127000 && $after_pretax_salary < 129000){
+    $after_dependant = [2150,530,0,0,0,0,0,0];
+  }elseif($after_pretax_salary >= 129000 && $after_pretax_salary < 131000){
+    $after_dependant = [2260,630,0,0,0,0,0,0];
+  }elseif($after_pretax_salary >= 131000 && $after_pretax_salary < 133000){
+    $after_dependant = [2360,740,0,0,0,0,0,0];
+  }elseif($after_pretax_salary >= 133000 && $after_pretax_salary < 135000){
+    $after_dependant = [2460,840,0,0,0,0,0,0];
+  }elseif($after_pretax_salary >= 135000 && $after_pretax_salary < 137000){
+    $after_dependant = [2550,930,0,0,0,0,0,0];
+  }elseif($after_pretax_salary >= 137000 && $after_pretax_salary < 139000){
+    $after_dependant = [2610,990,0,0,0,0,0,0];
+  }elseif($after_pretax_salary >= 139000 && $after_pretax_salary < 141000){
+    $after_dependant = [2680,1050,0,0,0,0,0,0];
+  }elseif($after_pretax_salary >= 141000 && $after_pretax_salary < 143000){
+    $after_dependant = [2740,1110,0,0,0,0,0,0];
+  }elseif($after_pretax_salary >= 143000 && $after_pretax_salary < 145000){
+    $after_dependant = [2800,1170,0,0,0,0,0,0];
+  }elseif($after_pretax_salary >= 145000 && $after_pretax_salary < 147000){
+    $after_dependant = [2860,1240,0,0,0,0,0,0];
+  }elseif($after_pretax_salary >= 147000 && $after_pretax_salary < 149000){
+    $after_dependant = [2920,1300,0,0,0,0,0,0];
+  }elseif($after_pretax_salary >= 149000 && $after_pretax_salary < 151000){
+    $after_dependant = [2980,1360,0,0,0,0,0,0];
+  }elseif($after_pretax_salary >= 151000 && $after_pretax_salary < 153000){
+    $after_dependant = [3050,1430,0,0,0,0,0,0];
+  }elseif($after_pretax_salary >= 153000 && $after_pretax_salary < 155000){
+    $after_dependant = [3120,1500,0,0,0,0,0,0];
+  }elseif($after_pretax_salary >= 155000 && $after_pretax_salary < 157000){
+    $after_dependant = [3200,1570,0,0,0,0,0,0];
+  }elseif($after_pretax_salary >= 157000 && $after_pretax_salary < 159000){
+    $after_dependant = [3270,1640,0,0,0,0,0,0];
+  }elseif($after_pretax_salary >= 159000 && $after_pretax_salary < 161000){
+    $after_dependant = [3340,1720,100,0,0,0,0,0];
+  }elseif($after_pretax_salary >= 161000 && $after_pretax_salary < 163000){
+    $after_dependant = [3410,1790,170,0,0,0,0,0];
+  }elseif($after_pretax_salary >= 163000 && $after_pretax_salary < 165000){
+    $after_dependant = [3480,1860,250,0,0,0,0,0];
+  }elseif($after_pretax_salary >= 165000 && $after_pretax_salary < 167000){
+    $after_dependant = [3550,1930,320,0,0,0,0,0];
+  }elseif($after_pretax_salary >= 167000 && $after_pretax_salary < 500000){ //途中休憩：ここから再開
+    $after_dependant = [6550,5930,5320,5000,4500,4000,3500,3000];
+  }elseif($after_pretax_salary >= 500000 && $after_pretax_salary < 1000000){
+    $after_dependant = [16550,15930,15320,15000,14500,14000,13500,13000];
   }else{
-    $after_dependant0 = 45000;
-    $after_dependant1 = 44000;
-    $after_dependant2 = 43000;
-    $after_dependant3 = 42000;
-    $after_dependant4 = 41000;
-    $after_dependant5 = 40000;
-    $after_dependant6 = 39000;
-    $after_dependant7 = 38000;
+    $after_dependant = [26550,25930,25320,25000,24500,24000,23500,23000];
+/*  }elseif($after_pretax_salary >=  && $after_pretax_salary < ){
+    $after_dependant = [,,,,,,,];
+  }elseif($after_pretax_salary >=  && $after_pretax_salary < ){
+    $after_dependant = [,,,,,,,];*/
   }
 //導入後：社保控除後の金額に応じた源泉徴収額の計算 終了----------------------
 
 
-//導入後：扶養家族に応じた源泉徴収額の計算 開始----------------------
+
+// 導入後：扶養家族に応じた源泉徴収額の計算 開始----------------------
 if($dependants == 0 ){
-  $after_income_tax =  $after_dependant0;
+  $after_income_tax =  $after_dependant[0];
 }elseif($dependants == 1 ){
-  $after_income_tax =  $after_dependant1;
+  $after_income_tax =  $after_dependant[1];
 }elseif($dependants == 2 ){
-  $after_income_tax =  $after_dependant2;
+  $after_income_tax =  $after_dependant[2];
 }elseif($dependants == 3 ){
-  $after_income_tax =  $after_dependant3;
+  $after_income_tax =  $after_dependant[3];
 }elseif($dependants == 4 ){
-  $after_income_tax =  $after_dependant4;
+  $after_income_tax =  $after_dependant[4];
 }elseif($dependants == 5 ){
-  $after_income_tax =  $after_dependant5;
+  $after_income_tax =  $after_dependant[5];
 }elseif($dependants == 6 ){
-  $after_income_tax =  $after_dependant6;
+  $after_income_tax =  $after_dependant[6];
 }else{
-  $after_income_tax =  $after_dependant7;
+  $after_income_tax =  $after_dependant[7];
 }
-//導入後：扶養家族に応じた源泉徴収額の計算 終了----------------------
+// 導入後：扶養家族に応じた源泉徴収額の計算 終了----------------------
 
 
 // 導入後：住民税の計算 開始-----------------------------------------
-  $after_inhabitant_tax = 8000;
+  // 給与所得控除の計算
+  if($after_yearly_income < 1625000){
+    $after_salary_deduction = 650000;
+  }elseif($after_yearly_income >= 1625000 && $after_yearly_income <= 1800000){
+    $after_salary_deduction = $after_yearly_income * 0.4;
+  }elseif($after_yearly_income > 1800000 && $after_yearly_income <= 3600000){
+    $after_salary_deduction = $after_yearly_income * 0.3 + 180000;
+  }elseif($after_yearly_income > 3600000 && $after_yearly_income <= 6600000){
+    $after_salary_deduction = $after_yearly_income * 0.2 + 540000;
+  }elseif($after_yearly_income > 6600000 && $after_yearly_income <= 10000000){
+    $after_salary_deduction = $after_yearly_income * 0.1 + 1200000;
+  }elseif($after_yearly_income > 1625000 && $after_yearly_income <= 1800000){
+    $after_salary_deduction = $after_yearly_income * 0.4;
+  }else{
+    $after_salary_deduction = 2200000;
+  }
+
+  //所得控除
+  $after_income_deduction = $basic_deduction + $partner_deduction + $dependant_deduction + $after_social_insurance_total;
+
+  // 住民税計算用の課税対象金額の計算
+  $after_inhabitant_tax_yearly = $after_yearly_income - $after_salary_deduction - $after_income_deduction ;
+
+  // 月額住民税の計算
+  $after_inhabitant_tax = floor($after_inhabitant_tax_yearly / 120);
+
+// 導入後：住民税の計算 終了-----------------------------------------
 
 // 導入後：社保、税金、家賃控除後の可処分所得の計算
   $after_disposable_income = $after_salary - $after_health_insurance_expense - $after_pension_premiums - $after_income_tax - $after_inhabitant_tax - $rest_payment;
