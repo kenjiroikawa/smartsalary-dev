@@ -247,24 +247,12 @@ foreach ($events as $event) {
     $bot->replyText($event->getReplyToken(), $error);
     exit;
 /*  }elsif(preg_match("/[^一-龠]/u",$location){
-    $error = "入力に誤りがあります。\n";
-    $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
-                                      TextMessageBuilder($error));
-
-      if(!$response->isSucceeded()){
-      error_log('Failed! '. $response->getHTTPStatus . ' ' .
-                                    $response->getRawBody());
-        }
+    $error = "都道府県の入力に誤りがあります。";
+    $bot->replyText($event->getReplyToken(), $error);
     exit;
   }elsif(preg_match("/^[0-9]+$/", $space)){
     $error = "広さの入力に誤りがあります。半角数値のみで入力してください。\n";
-    $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
-                                      TextMessageBuilder($error));
-
-      if(!$response->isSucceeded()){
-      error_log('Failed! '. $response->getHTTPStatus . ' ' .
-                                    $response->getRawBody());
-        }
+    $bot->replyText($event->getReplyToken(), $error);
     exit;*/
   }else{
 
