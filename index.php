@@ -585,7 +585,7 @@ if($dependants == 0 ){
 // 導入前：住民税の計算 終了-----------------------------------------
 
 // 導入前：社保、税金、家賃控除後の可処分所得の計算
-$before_disposable_income = $parameter[2] - $before_health_insurance_expense - $before_pension_premiums - $before_income_tax - $before_inhabitant_tax - $parameter[4];
+$before_disposable_income = $before_salary - $before_health_insurance_expense - $before_pension_premiums - $before_income_tax - $before_inhabitant_tax - $houserent;
 
 
 // 導入後：給与に応じた社会保険料の計算 開始-------------------------------
@@ -807,6 +807,8 @@ if($dependants == 0 ){
 
   $calculation[] = $effect;                                 // [25] スマートサラリー導入効果
 
+  $calculation[] = $before_salary_deduction;                // [26] 給与所得控除
+  $calculation[] = $before_income_deduction;                // [27] 所得控除
 
 
   $message1 = "シミュレーション結果\n\n基本情報\n年齢：$calculation[0]歳\n配偶者：$calculation[1]\n扶養家族：$calculation[2]人\n\n家賃：$calculation[3]円\n勤務地の都道府県：$calculation[4]\n都道府県毎の住宅利益：$calculation[5]円/1畳\n広さ：$calculation[6]畳\n現物支給額換算：$calculation[7]円";
@@ -816,8 +818,9 @@ if($dependants == 0 ){
 
   $message3 = "導入後\n\n会社負担家賃（家賃×0.8）：$calculation[16]円\n本人負担家賃（家賃×0.2）：$calculation[17]円\n月額給与：$calculation[18]円\n年間賞与：$calculation[9]円\n年収：$calculation[19] 円\n健康保険料：$calculation[20]円\n厚生年金保険料：$calculation[21]円\n所得税：$calculation[22]円\n住民税：$calculation[23]円\n社保、税金、家賃控除後の可処分所得：$calculation[24]円\n\nスマートサラリー導入効果：$calculation[25]円\n";
 
+  $message4 = " //給与所得控除：$calculation[26]円\n所得控除：$calculation[27]円";
   // メッセージをユーザーに返信
-$bot->replyText($event->getReplyToken(), $message1, $message2, $message3);
+$bot->replyText($event->getReplyToken(), $message1, $message2, $message3, $message4);
 
 /*
   $response = $bot->replyMessage($event->getReplyToken(), new \LINE\LINEBot\MessageBuilder\
