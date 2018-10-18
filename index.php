@@ -243,7 +243,7 @@ foreach ($events as $event) {
   $payment_reduce = $houserent * 0.8;                          // 導入後：会社支払家賃
   $rest_payment = $houserent * 0.2;                            // 導入後：本人支払家賃
   $after_salary = $parameter[2] - $payment_reduce;             // 導入後：給与
-  $after_yearly_income = $after_salary + $before_bonus;    // 導入後：年収
+  $after_yearly_income = $after_salary * 12 + $before_bonus;    // 導入後：年収
 
 
 
