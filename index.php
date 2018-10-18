@@ -240,12 +240,7 @@ foreach ($events as $event) {
 
   if( substr_count($parameters, '、') < 7){
     $error = "入力項目が不足しています。\n案内に沿って、8項目を入力してください。";
-    $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
-                                      TextMessageBuilder($error));
-
-      if(!$response->isSucceeded()){
-      error_log('Failed! '. $response->getHTTPStatus . ' ' .
-                                    $response->getRawBody());
+    $bot->replyText($event->getReplyToken(), $error);
       }
     exit;
 /*  }elsif( substr_count($parameters, '、') > 7){
@@ -308,12 +303,7 @@ foreach ($events as $event) {
   $housebenefit = 1310;
   }else{
     $exception = "申し訳ございません。シミュレーション対象外の地域です。\n対象の地域は、東京都・神奈川県・埼玉県・千葉県・茨城県・群馬県・栃木県となります。";
-    $response = $bot->pushMessage($userId, new \LINE\LINEBot\MessageBuilder\
-                                      TextMessageBuilder($exception));
-
-      if(!$response->isSucceeded()){
-      error_log('Failed! '. $response->getHTTPStatus . ' ' .
-                                    $response->getRawBody());
+    $bot->replyText($event->getReplyToken(), $exception);
       }
   exit;
   }
