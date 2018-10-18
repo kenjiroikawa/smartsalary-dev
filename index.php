@@ -216,24 +216,18 @@ foreach ($events as $event) {
   }
 
 
-  // 入力情報を受取
-  $parameters = $event->getText();
+  $parameters = $event->getText();         // 入力情報を受取
+  $parameter = explode("、",$parameters);  // 入力情報を分割
 
-  //　ユーザーIDを取得
-  $userId = $event->getUserId();
-
-  //parametersを分解
-  $parameter = explode("、",$parameters);
-
-  // 基本情報：各parametersをそれぞれの変数に代入
-  $location = $parameter[0];
-  $space = $parameter[1];
-  $before_salary = $parameter[2];
-  $before_bonus = $parameter[3];
-  $houserent = $parameter[4];
-  $ages = $parameter[5];
-  $partner = $parameter[6];
-  $dependants = $parameter[7];
+  // 基本情報：各項目をそれぞれの変数に代入
+  $ages = $parameter[0];            // 年齢
+  $partner = $parameter[1];         // 配偶者の有無
+  $dependants = $parameter[2];      // 扶養家族の数
+  $location = $parameter[3];        // 勤務地の都道府県
+  $houserent = $parameter[4];       // お住まいの家賃
+  $space = $parameter[5];           // お住まいの居住空間の広さ
+  $before_salary = $parameter[6];   // 現在の月額給与
+  $before_bonus = $parameter[7];    // 現在の年間賞与
 
 
   //入力のバリデーション
@@ -270,10 +264,10 @@ foreach ($events as $event) {
 
 
   // 事前計算
-  $before_yearly_income = $before_salary * 12 + $before_bonus;  // 導入前：年収
+  $before_yearly_income = $before_salary * 12 + $before_bonus; // 導入前：年収
   $payment_reduce = $houserent * 0.8;                          // 導入後：会社支払家賃
   $rest_payment = $houserent * 0.2;                            // 導入後：本人支払家賃
-  $after_salary = $parameter[2] - $payment_reduce;             // 導入後：給与
+  $after_salary = $before_salary - $payment_reduce;            // 導入後：給与
   $after_yearly_income = $after_salary * 12 + $before_bonus;   // 導入後：年収
 
 
