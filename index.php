@@ -243,10 +243,10 @@ foreach ($events as $event) {
     $bot->replyText($event->getReplyToken(), $error);
     exit;
   }elseif( substr_count($parameters, '、') > 7){
-    $error = "入力に誤りがあります。\n案内に沿って、8項目を入力してください。";
+    $error = "9項目以上が入力されています。\n案内に沿って、8項目を入力してください。";
     $bot->replyText($event->getReplyToken(), $error);
     exit;
-/*  }elseif(preg_match("/[^一-龠]/u",$location){
+  }elseif(preg_match("/[^一-龠]/u",$location){
     $error = "都道府県の入力に誤りがあります。";
     $bot->replyText($event->getReplyToken(), $error);
     exit;
